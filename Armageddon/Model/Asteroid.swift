@@ -7,32 +7,22 @@
 
 import Foundation
 
-//class NewAsteroid {
-//    var arr: [Asteroid] {
-//        get {
-//            var result = [Asteroid]()
-//
-//        }
-//    }
-//}
-
 struct Object {
     let title: String?
     let data: [NearEarthObject]?
 }
 
-
 // MARK: - Asteroid
 struct Asteroid: Codable {
-//    let links: AsteroidLinks?
-//    let elementCount: Int?
+    let links: AsteroidLinks?
+    let elementCount: Int?
     let nearEarthObjects: [String: [NearEarthObject]]?
     
     var earthObjects: [Object] {
         get {
             var result = [Object]()
             guard let nearEarthObjects = nearEarthObjects else { return result }
-            
+
             for (key, value) in nearEarthObjects {
                 result.append(.init(title: key, data: value))
             }
@@ -41,21 +31,21 @@ struct Asteroid: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-//        case links
-//        case elementCount
-        case nearEarthObjects
+        case links
+        case elementCount = "element_count"
+        case nearEarthObjects = "near_earth_objects"
     }
 }
 
 // MARK: - AsteroidLinks
-//struct AsteroidLinks: Codable {
-//    let next, prev, linksSelf: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case next, prev
-//        case linksSelf
-//    }
-//}
+struct AsteroidLinks: Codable {
+    let next, prev, linksSelf: String?
+
+    enum CodingKeys: String, CodingKey {
+        case next, prev
+        case linksSelf = "self"
+    }
+}
 
 // MARK: - NearEarthObject
 struct NearEarthObject: Codable {
@@ -70,14 +60,14 @@ struct NearEarthObject: Codable {
 
     enum CodingKeys: String, CodingKey {
         case links, id
-        case neoReferenceID
+        case neoReferenceID = "neo_reference_id"
         case name
-        case nasaJplURL
-        case absoluteMagnitudeH
-        case estimatedDiameter
-        case isPotentiallyHazardousAsteroid
-        case closeApproachData
-        case isSentryObject
+        case nasaJplURL = "nasa_jpl_url"
+        case absoluteMagnitudeH = "absolute_magnitude_h"
+        case estimatedDiameter = "estimated_diameter"
+        case isPotentiallyHazardousAsteroid = "is_potentially_hazardous_asteroid"
+        case closeApproachData = "close_approach_data"
+        case isSentryObject = "is_sentry_object"
     }
 }
 
@@ -90,12 +80,12 @@ struct CloseApproachDatum: Codable {
     let orbitingBody: OrbitingBody?
 
     enum CodingKeys: String, CodingKey {
-        case closeApproachDate
-        case closeApproachDateFull
-        case epochDateCloseApproach
-        case relativeVelocity
-        case missDistance
-        case orbitingBody
+        case closeApproachDate = "close_approach_date"
+        case closeApproachDateFull = "close_approach_date_full"
+        case epochDateCloseApproach = "epoch_date_close_approach"
+        case relativeVelocity = "relative_velocity"
+        case missDistance = "miss_distance"
+        case orbitingBody = "orbiting_body"
     }
 }
 
@@ -113,9 +103,9 @@ struct RelativeVelocity: Codable {
     let kilometersPerSecond, kilometersPerHour, milesPerHour: String?
 
     enum CodingKeys: String, CodingKey {
-        case kilometersPerSecond
-        case kilometersPerHour
-        case milesPerHour
+        case kilometersPerSecond = "kilometers_per_second"
+        case kilometersPerHour = "kilometers_per_hour"
+        case milesPerHour = "miles_per_hour"
     }
 }
 
@@ -129,8 +119,8 @@ struct Feet: Codable {
     let estimatedDiameterMin, estimatedDiameterMax: Double?
 
     enum CodingKeys: String, CodingKey {
-        case estimatedDiameterMin
-        case estimatedDiameterMax
+        case estimatedDiameterMin = "estimated_diameter_min"
+        case estimatedDiameterMax = "estimated_diameter_max"
     }
 }
 
@@ -139,6 +129,6 @@ struct NearEarthObjectLinks: Codable {
     let linksSelf: String?
 
     enum CodingKeys: String, CodingKey {
-        case linksSelf
+        case linksSelf = "self"
     }
 }

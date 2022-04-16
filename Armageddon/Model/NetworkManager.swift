@@ -33,11 +33,9 @@ class NetworkManager {
                 do {
                     let asteroid = try strongSelf.decoder.decode(Asteroid.self, from: data)
                     completion(asteroid)
-                    print(asteroid)
                 } catch {
                     print(error)
                 }
-            
         }.resume()
     }
 }

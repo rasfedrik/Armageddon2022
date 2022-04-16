@@ -20,18 +20,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-
         information()
     }
 
     func information() {
         networkManager.obtainAsteroids { result in
             self.asteroids.append(result)
-      
+            for item in self.asteroids {
+                for (_, value) in item.nearEarthObjects! {
+                    for i in value {
+                        self.nearEarthObject.append(i)
+                    }
+                }
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
 }
@@ -40,9 +44,8 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        return asteroids.count
+
+        return nearEarthObject.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,10 +54,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "cellId") {
             cell = reuseCell
-//            cell.textLabel?.text = String(indexPath.row)
         } else {
             cell = UITableViewCell.init(style: .default, reuseIdentifier: "cellId")
-//            cell.textLabel?.text = String(indexPath.row)
         }
         configureCell(cell: &cell, for: indexPath)
         return cell
@@ -65,7 +66,7 @@ extension ViewController {
     private func configureCell(cell: inout UITableViewCell, for indexPath: IndexPath) {
         var configuration = cell.defaultContentConfiguration()
     
-//        configuration.text = asteroids[indexPath.row].earthObjects[indexPath.section].title
+        configuration.text = nearEarthObject[indexPath.row].name
 //        configuration.text = asteroids[indexPath.section].nearEarthObjects?.first
         
         
