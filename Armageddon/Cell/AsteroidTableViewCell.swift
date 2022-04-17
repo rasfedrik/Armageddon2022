@@ -20,22 +20,12 @@ class AsteroidTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-
-        
-        contentView.backgroundColor = .white
-        
 
         mainView.backgroundColor = .white
-        mainView.layer.shadowColor = UIColor.black.cgColor
-        mainView.layer.shadowOpacity = 0.1
-        mainView.layer.shadowOffset = CGSize(width:0, height: 0)
-        mainView.layer.shadowRadius = 10
 
+        mainView.layer.masksToBounds = true
         mainView.layer.cornerRadius = 10
         mainView.clipsToBounds = true
-        mainView.layer.masksToBounds = false
-
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

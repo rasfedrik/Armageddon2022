@@ -28,6 +28,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-PQ-PFd" customClass="CellsShadow" customModule="Armageddon" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="11" width="374" height="299"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5D-Uu-srS">
                                                     <rect key="frame" x="20" y="11" width="374" height="299"/>
                                                     <subviews>
@@ -123,10 +127,14 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5TI-PQ-PFd" firstAttribute="leading" secondItem="t2P-xR-ANu" secondAttribute="leadingMargin" id="6mn-6b-Qa0"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="l5D-Uu-srS" secondAttribute="bottom" id="BQ6-zl-PHn"/>
                                                 <constraint firstItem="l5D-Uu-srS" firstAttribute="leading" secondItem="t2P-xR-ANu" secondAttribute="leadingMargin" id="UHs-0j-rOP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5TI-PQ-PFd" secondAttribute="trailing" id="WlP-Wc-OlZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="l5D-Uu-srS" secondAttribute="trailing" id="bUM-5E-bTT"/>
+                                                <constraint firstItem="5TI-PQ-PFd" firstAttribute="top" secondItem="t2P-xR-ANu" secondAttribute="topMargin" id="kek-ak-TKN"/>
                                                 <constraint firstItem="l5D-Uu-srS" firstAttribute="top" secondItem="t2P-xR-ANu" secondAttribute="topMargin" id="nDk-4b-wDe"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5TI-PQ-PFd" secondAttribute="bottom" id="s9I-51-vWi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

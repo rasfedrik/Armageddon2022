@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */; };
+		D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B86238280BFBD8007D11F9 /* CellsShadow.swift */; };
 		D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA893E28070CCB001B6510 /* AppDelegate.swift */; };
 		D8BA894128070CCB001B6510 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA894028070CCB001B6510 /* SceneDelegate.swift */; };
 		D8BA894328070CCB001B6510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA894228070CCB001B6510 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
+		D8B86238280BFBD8007D11F9 /* CellsShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsShadow.swift; sourceTree = "<group>"; };
 		D8BA893B28070CCB001B6510 /* Armageddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BA893E28070CCB001B6510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BA894028070CCB001B6510 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */,
+				D8B86238280BFBD8007D11F9 /* CellsShadow.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */,
 				D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */,
+				D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */,
 				D8BA894328070CCB001B6510 /* ViewController.swift in Sources */,
 				D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */,
 				D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */,
