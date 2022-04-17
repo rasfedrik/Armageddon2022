@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */; };
 		D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA893E28070CCB001B6510 /* AppDelegate.swift */; };
 		D8BA894128070CCB001B6510 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA894028070CCB001B6510 /* SceneDelegate.swift */; };
 		D8BA894328070CCB001B6510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA894228070CCB001B6510 /* ViewController.swift */; };
 		D8BA894628070CCB001B6510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BA894428070CCB001B6510 /* Main.storyboard */; };
 		D8BA894828070CD4001B6510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BA894728070CD4001B6510 /* Assets.xcassets */; };
 		D8BA894B28070CD4001B6510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BA894928070CD4001B6510 /* LaunchScreen.storyboard */; };
-		D8BA895528070E48001B6510 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895428070E48001B6510 /* Asteroid.swift */; };
+		D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895428070E48001B6510 /* SpaceObjects.swift */; };
 		D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895828071A5E001B6510 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
 		D8BA893B28070CCB001B6510 /* Armageddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BA893E28070CCB001B6510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BA894028070CCB001B6510 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,7 +28,7 @@
 		D8BA894728070CD4001B6510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8BA894A28070CD4001B6510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8BA894C28070CD4001B6510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8BA895428070E48001B6510 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
+		D8BA895428070E48001B6510 /* SpaceObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceObjects.swift; sourceTree = "<group>"; };
 		D8BA895828071A5E001B6510 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D87141B0280AC802006ED9C0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D8BA893228070CCB001B6510 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		D8BA893D28070CCB001B6510 /* Armageddon */ = {
 			isa = PBXGroup;
 			children = (
+				D87141B0280AC802006ED9C0 /* Cell */,
 				D8BA895328070E22001B6510 /* Model */,
 				D8BA893E28070CCB001B6510 /* AppDelegate.swift */,
 				D8BA894028070CCB001B6510 /* SceneDelegate.swift */,
@@ -75,7 +86,7 @@
 		D8BA895328070E22001B6510 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA895428070E48001B6510 /* Asteroid.swift */,
+				D8BA895428070E48001B6510 /* SpaceObjects.swift */,
 				D8BA895828071A5E001B6510 /* NetworkManager.swift */,
 			);
 			path = Model;
@@ -151,7 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BA895528070E48001B6510 /* Asteroid.swift in Sources */,
+				D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */,
+				D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */,
 				D8BA894328070CCB001B6510 /* ViewController.swift in Sources */,
 				D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */,
 				D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */,

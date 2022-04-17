@@ -13,67 +13,147 @@ class ViewController: UIViewController {
     
     private let networkManager = NetworkManager()
     
-    var asteroids = [Asteroid]()
-    var nearEarthObject = [NearEarthObject]()
+    var data: SpaceObjects?
+//    var nearEarthObject = [NearEarthObject]()
+    var dates = [String]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         information()
+//        registeredCustomTableViewCell()
     }
 
-    func information() {
+    private func information() {
         networkManager.obtainAsteroids { result in
-            self.asteroids.append(result)
-            for item in self.asteroids {
-                for (_, value) in item.nearEarthObjects! {
-                    for i in value {
-                        self.nearEarthObject.append(i)
-                    }
-                }
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            
+            self.data = result
+            guard let objects = result.nearEarthObjects else { return }
+            
+            self.dates = Array(objects.keys)
+            
             }
         }
+    
+    private func registeredCustomTableViewCell() {
+        let nib = UINib(nibName: "AsteroidTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "AsteroidTableViewCell")
     }
 }
 
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        dates.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return nearEarthObject.count
+        guard let data = data else { return 0 }
+        
+        guard let nearObjects = data.nearEarthObjects else {
+            return 0
+        }
+        
+        return nearObjects[dates[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell
+        guard let data = data else { return UITableViewCell() }
         
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "cellId") {
-            cell = reuseCell
-        } else {
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: "cellId")
+        guard let object = data.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] else { return UITableViewCell() }
+
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "AsteroidTableViewCell") as? AsteroidTableViewCell {
+
+            cell.headerViewLabel.text = object.name
+            
+            let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin
+            let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
+         
+            if let closeData = object.closeApproachData,                                                            //    let distance = closeData.first{$0.orbitingBody == "Earth" }
+               let date = closeData.first?.closeApproachDate,
+               let distance = closeData.first?.missDistance {
+                cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+                cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+            }
+            
+            cell.gradeLabel.text = (object.isPotentiallyHazardousAsteroid ?? false ) ? "Опасен" : "Не опасен"
+            
+            cell.diameterLabel.text = "Диаметр \(minDiametr!.average(x: Double(maxDiametr!))) м"
+            
+
+            
+//            cell.rangeLabel.text =
+            
+            //      "is_potentially_hazardous_asteroid": true, // Опасность
+            //      "estimated_diameter": { // Диаметр
+
+            //            "lunar": "117.7689258646",
+            //            "kilometers": "45290438.204452618",
+            //          },
+            
+            
+            return cell
         }
-        configureCell(cell: &cell, for: indexPath)
-        return cell
+        return UITableViewCell()
     }
 }
 
-extension ViewController {
-    private func configureCell(cell: inout UITableViewCell, for indexPath: IndexPath) {
-        var configuration = cell.defaultContentConfiguration()
+extension Double {
+    func average(x: Double) -> String {
+        return String((Int(x + self) / 2))
+    }
+}
+
+extension Date {
     
-        configuration.text = nearEarthObject[indexPath.row].name
-//        configuration.text = asteroids[indexPath.section].nearEarthObjects?.first
-        
-        
-        cell.contentConfiguration = configuration
+    func toStringUS() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
     }
+    
+    func toStringLocal() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.calendar = .current
+        dateFormatter.timeZone = .current
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter.string(from: self)
+    }
+//    func tomorrow() -> Date {
+//        return Date(timeIntervalSinceNow: 86400)
+//    }
 }
 
+extension String {
+    
+    func toDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: self)
+    }
+    
+    func cleanPrice() -> String {
+            let doubleValue = Int(Double(self) ?? 0.0)
+        
+            let formatter = NumberFormatter()
+        
+            formatter.maximumFractionDigits = 2
+            formatter.numberStyle = .decimal
+            formatter.locale = Locale(identifier: "ru_RU")
+            return formatter.string(from: NSNumber(value: doubleValue)) ?? "\(doubleValue)"
+        }
+    
+}
 
 
 
