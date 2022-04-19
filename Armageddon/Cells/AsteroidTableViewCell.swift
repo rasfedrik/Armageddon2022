@@ -43,15 +43,13 @@ class AsteroidTableViewCell: UITableViewCell {
         if !AsteroidTableViewCell.changeButtonStatus {
             
             AsteroidTableViewCell.namesOfAsteroids.append(false)
-            sender.setTitle("ВОССТАНОВИТЬ", for: .normal)
-            sender.backgroundColor = .red
             AsteroidTableViewCell.changeButtonStatus = true
         } else {
-            AsteroidTableViewCell.namesOfAsteroids.removeLast()
-            sender.setTitle("УНИЧТОЖИТЬ", for: .normal)
-            sender.backgroundColor = .systemBlue
+            
+            AsteroidTableViewCell.namesOfAsteroids.append(true)
             AsteroidTableViewCell.changeButtonStatus = false
         }
+        
     }
     
     // Градиент headerView
@@ -69,15 +67,9 @@ class AsteroidTableViewCell: UITableViewCell {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
 
         if isDanger {
-//            gradeLabel.text = "Опасен"
-//            gradeLabel.textColor = .red
             gradientLayer.colors = [leftColorRed, rightColorRed]
-
-            
         } else {
             gradientLayer.colors = [leftColorGreen, rightColorGreen]
-//            gradeLabel.text = "Не опасен"
-//            gradeLabel.textColor = .black
         }
         
         gradientLayer.frame = headerView.bounds

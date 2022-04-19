@@ -184,7 +184,7 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
-                                                                        <action selector="destroyButtonAction:" destination="7p6-ZA-EwS" eventType="touchUpInside" id="7be-5j-8Qa"/>
+                                                                        <action selector="destroyButtonAction:" destination="7p6-ZA-EwS" eventType="touchUpInside" id="C0E-Fa-22F"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>

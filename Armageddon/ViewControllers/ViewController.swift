@@ -40,6 +40,8 @@ class ViewController: UIViewController {
             action: #selector(goToFilter))
         navigationItem.rightBarButtonItem = filterButton
     }
+    
+    
 
     @objc func goToFilter() {
         let filterVC = storyboard?.instantiateViewController(identifier: FilterViewController.identifire) as! FilterViewController
@@ -125,6 +127,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         descriptionVC.title = path?.name
     }
 }
+
+
 
 // Вычисление среднего размера объекта
 extension Double {

@@ -12,6 +12,8 @@ class FilterViewController: UIViewController {
     static let identifire = "FilterViewController"
     static var isHazard = false
     
+    let userDefaults = UserDefaults.standard
+    
     @IBOutlet weak var filterTableView: UITableView!
     
     override func viewDidLoad() {
@@ -70,12 +72,12 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 1 {
             if let hazardCell = filterTableView.dequeueReusableCell(withIdentifier: "DescriptionCellId", for: indexPath) as? DescriptionTableViewCell {
                 
-//                if hazardCell.showHazards.isOn {
-//                    FilterViewController.isHazard = true
-//                } else {
-//                    FilterViewController.isHazard = false
-//                }
-//                
+                if hazardCell.showHazards.isOn {
+                    FilterViewController.isHazard = true
+                } else {
+                    FilterViewController.isHazard = false
+                }
+                
             return hazardCell
             }
         }
