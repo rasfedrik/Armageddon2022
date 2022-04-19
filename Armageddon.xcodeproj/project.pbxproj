@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D836251E280EFD3D008776B7 /* KillListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836251D280EFD3D008776B7 /* KillListViewController.swift */; };
 		D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */; };
 		D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */; };
 		D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B86238280BFBD8007D11F9 /* CellsShadow.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D836251D280EFD3D008776B7 /* KillListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillListViewController.swift; sourceTree = "<group>"; };
 		D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
 		D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAsteroidViewController.swift; sourceTree = "<group>"; };
 		D8B86238280BFBD8007D11F9 /* CellsShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsShadow.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				D8BA894228070CCB001B6510 /* ViewController.swift */,
 				D8E94A21280C5D1E00477C92 /* FilterViewController.swift */,
 				D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */,
+				D836251D280EFD3D008776B7 /* KillListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */,
 				D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */,
 				D8BA894328070CCB001B6510 /* ViewController.swift in Sources */,
+				D836251E280EFD3D008776B7 /* KillListViewController.swift in Sources */,
 				D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */,
 				D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */,
 				D8E94A2C280C76BF00477C92 /* ChangeDistanceTableViewCell.swift in Sources */,

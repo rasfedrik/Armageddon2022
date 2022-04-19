@@ -59,61 +59,61 @@ class ViewController: UIViewController {
     }
 }
 
+// Таблица
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
-    extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        dates.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let data = data else { return 0 }
         
-        func numberOfSections(in tableView: UITableView) -> Int {
-            dates.count
-        }
+        guard let nearObjects = data.nearEarthObjects else { return 0 }
         
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            guard let data = data else { return 0 }
-            
-            guard let nearObjects = data.nearEarthObjects else { return 0 }
-            
-            return nearObjects[dates[section]]!.count
-        }
+        return nearObjects[dates[section]]!.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-            guard let data = data else { return UITableViewCell() }
-            
-            guard let object = data.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] else { return UITableViewCell() }
+        guard let data = data else { return UITableViewCell() }
+        
+        guard let object = data.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] else { return UITableViewCell() }
 
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "AsteroidTableViewCell") as? AsteroidTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "AsteroidTableViewCell", for: indexPath) as? AsteroidTableViewCell {
 
-                cell.headerViewLabel.text = object.name
+            cell.headerViewLabel.text = object.name
 
-                if let closeData = object.closeApproachData,                                                                     //    let distance = closeData.first{$0.orbitingBody == "Earth" }
-                   let date = closeData.first?.closeApproachDate,
-                   let distance = closeData.first?.missDistance {
-                    cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-                    cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
-                }
-                
-                // Оценка опасности объекта
-                guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-                
-                cell.gradient(isDanger: isHazard)
-
-                if isHazard {
-                    cell.gradeLabel.text = "Опасен"
-                    cell.gradeLabel.textColor = .red
-                } else {
-                    cell.gradeLabel.text = "Не опасен"
-                    cell.gradeLabel.textColor = .black
-                }
-
-                // Размер объекта
-                let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin
-                let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
-                
-                cell.diameterLabel.text = "Диаметр \(minDiametr!.average(x: Double(maxDiametr!))) м"
-                
-                return cell
+            if let closeData = object.closeApproachData,                                                                     //    let distance = closeData.first{$0.orbitingBody == "Earth" }
+               let date = closeData.first?.closeApproachDate,
+               let distance = closeData.first?.missDistance {
+                cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+                cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
             }
-            return UITableViewCell()
+            
+            // Оценка опасности объекта
+            guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
+            
+            cell.gradient(isDanger: isHazard)
+
+            if isHazard {
+                cell.gradeLabel.text = "Опасен"
+                cell.gradeLabel.textColor = .red
+            } else {
+                cell.gradeLabel.text = "Не опасен"
+                cell.gradeLabel.textColor = .black
+            }
+
+            // Размер объекта
+            let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin
+            let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
+            
+            cell.diameterLabel.text = "Диаметр \(minDiametr!.average(x: Double(maxDiametr!))) м"
+            
+            return cell
         }
+        return UITableViewCell()
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -125,13 +125,6 @@ class ViewController: UIViewController {
         descriptionVC.title = path?.name
     }
 }
-
-
-
-
-
-
-
 
 // Вычисление среднего размера объекта
 extension Double {

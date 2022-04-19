@@ -17,22 +17,41 @@ class AsteroidTableViewCell: UITableViewCell {
     @IBOutlet weak var headerViewLabel: UILabel!
     @IBOutlet weak var destroyButton: UIButton!
     
+    static var changeButtonStatus = false
+    static var namesOfAsteroids = [Bool]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.layer.masksToBounds = true
         mainView.layer.cornerRadius = 10
         mainView.clipsToBounds = true
+        destroyButton.backgroundColor = .systemBlue
     }
 
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        gradient(isDanger: true)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+    }
+    
+    
+    @IBAction func destroyButtonAction(_ sender: UIButton) {
+        
+        if !AsteroidTableViewCell.changeButtonStatus {
+            
+            AsteroidTableViewCell.namesOfAsteroids.append(false)
+            sender.setTitle("ВОССТАНОВИТЬ", for: .normal)
+            sender.backgroundColor = .red
+            AsteroidTableViewCell.changeButtonStatus = true
+        } else {
+            AsteroidTableViewCell.namesOfAsteroids.removeLast()
+            sender.setTitle("УНИЧТОЖИТЬ", for: .normal)
+            sender.backgroundColor = .systemBlue
+            AsteroidTableViewCell.changeButtonStatus = false
+        }
     }
     
     // Градиент headerView

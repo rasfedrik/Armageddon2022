@@ -12,14 +12,39 @@
         <!--Уничтожение-->
         <scene sceneID="1Oc-3M-ovq">
             <objects>
-                <viewController id="W30-yt-A3L" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KillListViewController" id="W30-yt-A3L" customClass="KillListViewController" customModule="Armageddon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vlz-4p-Oe5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-so-01N">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="killListCell" id="FPU-sT-hJQ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FPU-sT-hJQ" id="2vo-VF-Gx7">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gDw-kg-i5s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t0N-so-01N" firstAttribute="leading" secondItem="gDw-kg-i5s" secondAttribute="leading" id="BqV-V9-Nnx"/>
+                            <constraint firstItem="gDw-kg-i5s" firstAttribute="trailing" secondItem="t0N-so-01N" secondAttribute="trailing" id="DFu-sK-GVT"/>
+                            <constraint firstItem="t0N-so-01N" firstAttribute="top" secondItem="gDw-kg-i5s" secondAttribute="top" id="Pxi-Lx-bfe"/>
+                            <constraint firstItem="gDw-kg-i5s" firstAttribute="bottom" secondItem="t0N-so-01N" secondAttribute="bottom" id="SFj-ls-JZA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Уничтожение" image="trash" catalog="system" id="fJh-Ld-9lx"/>
+                    <connections>
+                        <outlet property="tableViewKillList" destination="t0N-so-01N" id="aLZ-mN-k7u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTZ-BT-Yzg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,6 +183,9 @@
                                                                             <integer key="value" value="14"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="destroyButtonAction:" destination="7p6-ZA-EwS" eventType="touchUpInside" id="7be-5j-8Qa"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
