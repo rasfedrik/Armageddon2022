@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */; };
+		D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */; };
 		D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B86238280BFBD8007D11F9 /* CellsShadow.swift */; };
 		D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA893E28070CCB001B6510 /* AppDelegate.swift */; };
 		D8BA894128070CCB001B6510 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA894028070CCB001B6510 /* SceneDelegate.swift */; };
@@ -17,10 +18,16 @@
 		D8BA894B28070CD4001B6510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BA894928070CD4001B6510 /* LaunchScreen.storyboard */; };
 		D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895428070E48001B6510 /* SpaceObjects.swift */; };
 		D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895828071A5E001B6510 /* NetworkManager.swift */; };
+		D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E94A21280C5D1E00477C92 /* FilterViewController.swift */; };
+		D8E94A2C280C76BF00477C92 /* ChangeDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */; };
+		D8E94A2D280C76BF00477C92 /* ChangeDistanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */; };
+		D8E94A31280C7E1100477C92 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E94A2F280C7E1100477C92 /* DescriptionTableViewCell.swift */; };
+		D8E94A32280C7E1100477C92 /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E94A30280C7E1100477C92 /* DescriptionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
+		D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAsteroidViewController.swift; sourceTree = "<group>"; };
 		D8B86238280BFBD8007D11F9 /* CellsShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsShadow.swift; sourceTree = "<group>"; };
 		D8BA893B28070CCB001B6510 /* Armageddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BA893E28070CCB001B6510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +39,11 @@
 		D8BA894C28070CD4001B6510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8BA895428070E48001B6510 /* SpaceObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceObjects.swift; sourceTree = "<group>"; };
 		D8BA895828071A5E001B6510 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D8E94A21280C5D1E00477C92 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDistanceTableViewCell.swift; sourceTree = "<group>"; };
+		D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeDistanceTableViewCell.xib; sourceTree = "<group>"; };
+		D8E94A2F280C7E1100477C92 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		D8E94A30280C7E1100477C92 /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,13 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D87141B0280AC802006ED9C0 /* Cell */ = {
+		D87141B0280AC802006ED9C0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */,
 				D8B86238280BFBD8007D11F9 /* CellsShadow.swift */,
+				D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */,
+				D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */,
+				D8E94A2F280C7E1100477C92 /* DescriptionTableViewCell.swift */,
+				D8E94A30280C7E1100477C92 /* DescriptionTableViewCell.xib */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D8BA893228070CCB001B6510 = {
@@ -73,11 +89,10 @@
 		D8BA893D28070CCB001B6510 /* Armageddon */ = {
 			isa = PBXGroup;
 			children = (
-				D87141B0280AC802006ED9C0 /* Cell */,
+				D87141B0280AC802006ED9C0 /* Cells */,
 				D8BA895328070E22001B6510 /* Model */,
-				D8BA893E28070CCB001B6510 /* AppDelegate.swift */,
-				D8BA894028070CCB001B6510 /* SceneDelegate.swift */,
-				D8BA894228070CCB001B6510 /* ViewController.swift */,
+				D8E94A27280C639D00477C92 /* SupportingFiles */,
+				D8E94A24280C636F00477C92 /* ViewControllers */,
 				D8BA894428070CCB001B6510 /* Main.storyboard */,
 				D8BA894728070CD4001B6510 /* Assets.xcassets */,
 				D8BA894928070CD4001B6510 /* LaunchScreen.storyboard */,
@@ -93,6 +108,25 @@
 				D8BA895828071A5E001B6510 /* NetworkManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D8E94A24280C636F00477C92 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8BA894228070CCB001B6510 /* ViewController.swift */,
+				D8E94A21280C5D1E00477C92 /* FilterViewController.swift */,
+				D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D8E94A27280C639D00477C92 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D8BA893E28070CCB001B6510 /* AppDelegate.swift */,
+				D8BA894028070CCB001B6510 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E94A32280C7E1100477C92 /* DescriptionTableViewCell.xib in Resources */,
+				D8E94A2D280C76BF00477C92 /* ChangeDistanceTableViewCell.xib in Resources */,
 				D8BA894B28070CD4001B6510 /* LaunchScreen.storyboard in Resources */,
 				D8BA894828070CD4001B6510 /* Assets.xcassets in Resources */,
 				D8BA894628070CCB001B6510 /* Main.storyboard in Resources */,
@@ -165,11 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E94A31280C7E1100477C92 /* DescriptionTableViewCell.swift in Sources */,
 				D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */,
 				D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */,
+				D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */,
 				D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */,
 				D8BA894328070CCB001B6510 /* ViewController.swift in Sources */,
+				D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */,
 				D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */,
+				D8E94A2C280C76BF00477C92 /* ChangeDistanceTableViewCell.swift in Sources */,
 				D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */,
 				D8BA894128070CCB001B6510 /* SceneDelegate.swift in Sources */,
 			);

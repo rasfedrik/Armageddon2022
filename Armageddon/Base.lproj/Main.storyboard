@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xbr-8x-rIt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,7 +9,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Уничтожение-->
+        <scene sceneID="1Oc-3M-ovq">
+            <objects>
+                <viewController id="W30-yt-A3L" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vlz-4p-Oe5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gDw-kg-i5s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Уничтожение" image="trash" catalog="system" id="fJh-Ld-9lx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTZ-BT-Yzg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68" y="485"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="94C-cd-SCy">
+            <objects>
+                <tabBarController id="xbr-8x-rIt" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zEn-2E-zse">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Dbe-gR-vU5" kind="relationship" relationship="viewControllers" id="crl-pE-eGS"/>
+                        <segue destination="W30-yt-A3L" kind="relationship" relationship="viewControllers" id="HmS-K8-IDn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoY-eU-M6z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1725" y="106"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="kVF-KY-SSb">
+            <objects>
+                <navigationController id="Dbe-gR-vU5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="YZy-yh-zSe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b1t-Fi-y81">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cuU-SO-HgB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tum-P3-KWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-881" y="-224"/>
+        </scene>
+        <!--Астеройды-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewControllerList" id="BYZ-38-t0r" customClass="ViewController" customModule="Armageddon" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UuL-sz-KxZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AsteroidTableViewCell" rowHeight="321" id="7p6-ZA-EwS" customClass="AsteroidTableViewCell" customModule="Armageddon" customModuleProvider="target">
@@ -95,7 +146,7 @@
                                                                     <color key="backgroundColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="28" id="NV2-tZ-ybi"/>
-                                                                        <constraint firstAttribute="width" constant="121" id="l98-dd-PNK"/>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="121" id="l98-dd-PNK"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
@@ -111,6 +162,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="9t3-A7-aeo" firstAttribute="height" secondItem="l5D-Uu-srS" secondAttribute="height" multiplier="0.47" id="1NC-PA-AN4"/>
                                                         <constraint firstAttribute="bottom" secondItem="sGk-t1-u1U" secondAttribute="bottom" constant="16" id="3xH-JG-0gc"/>
@@ -160,16 +212,65 @@
                             <constraint firstItem="UuL-sz-KxZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="z5G-Pz-JMo"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Астеройды" image="globe" catalog="system" id="WnB-lV-pRS"/>
+                    <navigationItem key="navigationItem" id="7fu-bg-aVy"/>
                     <connections>
                         <outlet property="tableView" destination="UuL-sz-KxZ" id="qBJ-tk-7Fd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="101.78571428571428"/>
+            <point key="canvasLocation" x="-68" y="-224"/>
+        </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="kMQ-j2-dt0">
+            <objects>
+                <viewController storyboardIdentifier="FilterViewController" id="3YY-yH-hCm" customClass="FilterViewController" customModule="Armageddon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Te-bh-bHi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-bh-EvS">
+                                <rect key="frame" x="20" y="155" width="374" height="707"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qxo-7u-X6P"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="bottom" secondItem="Qxo-7u-X6P" secondAttribute="bottom" id="CVy-Gz-BGn"/>
+                            <constraint firstItem="Qxo-7u-X6P" firstAttribute="trailing" secondItem="PVn-bh-EvS" secondAttribute="trailing" constant="20" id="eUP-8Q-C7E"/>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="leading" secondItem="Qxo-7u-X6P" secondAttribute="leading" constant="20" id="pHQ-E8-jiX"/>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="top" secondItem="Qxo-7u-X6P" secondAttribute="top" constant="111" id="reE-ri-BUs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="filterTableView" destination="PVn-bh-EvS" id="UR1-5J-z2D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FbD-vM-p2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714.49275362318849" y="-224.33035714285714"/>
+        </scene>
+        <!--Description Asteroid View Controller-->
+        <scene sceneID="kgi-f3-B4z">
+            <objects>
+                <viewController storyboardIdentifier="DescriptionAsteroidViewController" id="SWG-XK-d8F" customClass="DescriptionAsteroidViewController" customModule="Armageddon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KtU-ub-6UD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="twi-J1-Xja"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kbg-A4-d3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426" y="-224"/>
         </scene>
     </scenes>
     <resources>
+        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
