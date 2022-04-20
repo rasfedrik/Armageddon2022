@@ -1,17 +1,15 @@
 //
-//  ViewController.swift
+//  ListOfAsteroidsViewController.swift
 //  Armageddon
-//
-//  Created by Семен Беляков on 13.04.2022.
-//
+
 
 import UIKit
 
-class ViewController: UIViewController {
+class ListOfAsteroidsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    static let identifire = "ViewControllerList"
+    static let identifire = "ListOfAsteroidsViewController"
     
     private let networkManager = NetworkManager()
     
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
 }
 
 // Таблица
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         dates.count
@@ -127,52 +125,3 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         descriptionVC.title = path?.name
     }
 }
-
-
-
-// Вычисление среднего размера объекта
-extension Double {
-    func average(x: Double) -> String {
-        return String((Int(x + self) / 2))
-    }
-}
-
-// Изменение отображения формата даты
-extension Date {
-    func toStringUS() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: self)
-    }
-    
-    func toStringLocal() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.calendar = .current
-        dateFormatter.timeZone = .current
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        return dateFormatter.string(from: self)
-    }
-}
-
-extension String {
-    func toDate() -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: self)
-    }
-    
-    func cleanPrice() -> String {
-            let doubleValue = Int(Double(self) ?? 0.0)
-        
-            let formatter = NumberFormatter()
-        
-            formatter.maximumFractionDigits = 2
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "ru_RU")
-            return formatter.string(from: NSNumber(value: doubleValue)) ?? "\(doubleValue)"
-    }
-}
-
-
-

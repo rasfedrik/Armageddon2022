@@ -46,7 +46,7 @@ class FilterViewController: UIViewController {
         
         if FilterViewController.isHazard {
             let vc = storyboard?.instantiateViewController(
-                identifier: ViewController.identifire) as! ViewController
+                identifier: ListOfAsteroidsViewController.identifire) as! ListOfAsteroidsViewController
             navigationController?.pushViewController(vc, animated: true)
         }
     }

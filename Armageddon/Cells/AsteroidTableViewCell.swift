@@ -37,7 +37,7 @@ class AsteroidTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
+    // Кнопка отправляющая астеройд на уничтожение
     @IBAction func destroyButtonAction(_ sender: UIButton) {
         
         if !AsteroidTableViewCell.changeButtonStatus {
@@ -49,7 +49,6 @@ class AsteroidTableViewCell: UITableViewCell {
             AsteroidTableViewCell.namesOfAsteroids.append(true)
             AsteroidTableViewCell.changeButtonStatus = false
         }
-        
     }
     
     // Градиент headerView
