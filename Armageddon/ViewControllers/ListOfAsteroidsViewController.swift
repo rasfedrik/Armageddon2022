@@ -8,13 +8,10 @@ import UIKit
 class ListOfAsteroidsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
     static let identifire = "ListOfAsteroidsViewController"
-    
+
     private let networkManager = NetworkManager()
-    
-    var arrayWithHazard = [Bool]()
-    
+
     private var data: SpaceObjects?
     private var dates = [String]() {
         didSet {
@@ -26,6 +23,8 @@ class ListOfAsteroidsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(AsteroidTableViewCell.nib(), forCellReuseIdentifier: AsteroidTableViewCell.identifire)
+        
         navigationItem.title = "Армагеддон 2022"
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,11 +38,14 @@ class ListOfAsteroidsViewController: UIViewController {
         navigationItem.rightBarButtonItem = filterButton
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
+    }
     
 
     @objc func goToFilter() {
         let filterVC = storyboard?.instantiateViewController(identifier: FilterViewController.identifire) as! FilterViewController
-        
         navigationController?.pushViewController(filterVC, animated: true)
     }
     
@@ -53,7 +55,6 @@ class ListOfAsteroidsViewController: UIViewController {
             
             self.data = result
             guard let objects = result.nearEarthObjects else { return }
-            
             self.dates = Array(objects.keys).sorted(by: { $0 < $1 })
         }
     }
@@ -68,34 +69,46 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = data else { return 0 }
+        guard var objects = data.nearEarthObjects?[dates[section]]! else { return 0 }
         
-        guard let nearObjects = data.nearEarthObjects else { return 0 }
+        if UserDefaults.standard.bool(forKey: "isHazard") {
+            objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
+        }
         
-        return nearObjects[dates[section]]!.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let data = data else { return UITableViewCell() }
-        
-        guard let object = data.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] else { return UITableViewCell() }
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "AsteroidTableViewCell", for: indexPath) as? AsteroidTableViewCell {
-
+        if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
+            
+            guard let data = data else { return UITableViewCell() }
+            guard var objects = data.nearEarthObjects?[dates[indexPath.section]]! else { return UITableViewCell() }
+            
+            if UserDefaults.standard.bool(forKey: "isHazard") {
+                objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
+            }
+            
+            let object = objects[indexPath.row]
+            guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
+            
             cell.headerViewLabel.text = object.name
-
-            if let closeData = object.closeApproachData,                                                                     //    let distance = closeData.first{$0.orbitingBody == "Earth" }
+            
+            if let closeData = object.closeApproachData,
                let date = closeData.first?.closeApproachDate,
                let distance = closeData.first?.missDistance {
                 cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-                cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+                
+                
+                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
+                    cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+                } else {
+                    cell.rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
+                }
             }
             
             // Оценка опасности объекта
-            guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-            
             cell.gradient(isDanger: isHazard)
-
             if isHazard {
                 cell.gradeLabel.text = "Опасен"
                 cell.gradeLabel.textColor = .red
@@ -104,12 +117,20 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 cell.gradeLabel.textColor = .black
             }
 
+
             // Размер объекта
             let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin
             let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
-            
+
             cell.diameterLabel.text = "Диаметр \(minDiametr!.average(x: Double(maxDiametr!))) м"
+
             
+            // Добавление астеройда в список на уничтожение
+            cell.buttonAction = { [weak self] in
+                KillListViewController.killListArray.append(
+                    KillListViewController.Objects(keys: self?.dates[indexPath.section] ?? "",
+                                                   values: [object]))
+            }
             return cell
         }
         return UITableViewCell()
@@ -125,3 +146,5 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
         descriptionVC.title = path?.name
     }
 }
+
+

@@ -31,6 +31,9 @@
                             <segment title="км"/>
                             <segment title="л. орб."/>
                         </segments>
+                        <connections>
+                            <action selector="unitsValueAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="6d5-lE-rHt"/>
+                        </connections>
                     </segmentedControl>
                 </subviews>
                 <constraints>

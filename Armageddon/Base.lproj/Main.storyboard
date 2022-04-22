@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,16 +19,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t0N-so-01N">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="killListCell" id="FPU-sT-hJQ">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FPU-sT-hJQ" id="2vo-VF-Gx7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gDw-kg-i5s"/>
@@ -97,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AsteroidTableViewCell" rowHeight="321" id="7p6-ZA-EwS" customClass="AsteroidTableViewCell" customModule="Armageddon" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="delete" rowHeight="321" id="7p6-ZA-EwS">
                                         <rect key="frame" x="0.0" y="28" width="414" height="321"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7p6-ZA-EwS" id="t2P-xR-ANu">
@@ -258,18 +247,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-bh-EvS">
-                                <rect key="frame" x="20" y="155" width="374" height="707"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-bh-EvS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qxo-7u-X6P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PVn-bh-EvS" firstAttribute="bottom" secondItem="Qxo-7u-X6P" secondAttribute="bottom" id="CVy-Gz-BGn"/>
-                            <constraint firstItem="Qxo-7u-X6P" firstAttribute="trailing" secondItem="PVn-bh-EvS" secondAttribute="trailing" constant="20" id="eUP-8Q-C7E"/>
-                            <constraint firstItem="PVn-bh-EvS" firstAttribute="leading" secondItem="Qxo-7u-X6P" secondAttribute="leading" constant="20" id="pHQ-E8-jiX"/>
-                            <constraint firstItem="PVn-bh-EvS" firstAttribute="top" secondItem="Qxo-7u-X6P" secondAttribute="top" constant="111" id="reE-ri-BUs"/>
+                            <constraint firstItem="Qxo-7u-X6P" firstAttribute="trailing" secondItem="PVn-bh-EvS" secondAttribute="trailing" id="0mv-tl-344"/>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="bottom" secondItem="Qxo-7u-X6P" secondAttribute="bottom" id="cBH-Xr-jzt"/>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="top" secondItem="Qxo-7u-X6P" secondAttribute="top" id="fzx-sC-X0H"/>
+                            <constraint firstItem="PVn-bh-EvS" firstAttribute="leading" secondItem="Qxo-7u-X6P" secondAttribute="leading" id="vHz-R9-hrp"/>
                         </constraints>
                     </view>
                     <connections>

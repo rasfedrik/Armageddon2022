@@ -10,7 +10,8 @@
 		D80E7C6B28104FF9001CB43D /* ListOfAsteroidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E7C6A28104FF9001CB43D /* ListOfAsteroidsViewController.swift */; };
 		D80E7C6F28105127001CB43D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80E7C6E28105127001CB43D /* Extensions.swift */; };
 		D836251E280EFD3D008776B7 /* KillListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836251D280EFD3D008776B7 /* KillListViewController.swift */; };
-		D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */; };
+		D83C051528130CC3004A5971 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83C051328130CC3004A5971 /* AsteroidTableViewCell.swift */; };
+		D83C051628130CC3004A5971 /* AsteroidTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D83C051428130CC3004A5971 /* AsteroidTableViewCell.xib */; };
 		D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */; };
 		D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B86238280BFBD8007D11F9 /* CellsShadow.swift */; };
 		D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA893E28070CCB001B6510 /* AppDelegate.swift */; };
@@ -31,7 +32,8 @@
 		D80E7C6A28104FF9001CB43D /* ListOfAsteroidsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfAsteroidsViewController.swift; sourceTree = "<group>"; };
 		D80E7C6E28105127001CB43D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D836251D280EFD3D008776B7 /* KillListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillListViewController.swift; sourceTree = "<group>"; };
-		D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
+		D83C051328130CC3004A5971 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
+		D83C051428130CC3004A5971 /* AsteroidTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AsteroidTableViewCell.xib; sourceTree = "<group>"; };
 		D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAsteroidViewController.swift; sourceTree = "<group>"; };
 		D8B86238280BFBD8007D11F9 /* CellsShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsShadow.swift; sourceTree = "<group>"; };
 		D8BA893B28070CCB001B6510 /* Armageddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +74,8 @@
 		D87141B0280AC802006ED9C0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D87141B9280AF98E006ED9C0 /* AsteroidTableViewCell.swift */,
+				D83C051328130CC3004A5971 /* AsteroidTableViewCell.swift */,
+				D83C051428130CC3004A5971 /* AsteroidTableViewCell.xib */,
 				D8B86238280BFBD8007D11F9 /* CellsShadow.swift */,
 				D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */,
 				D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */,
@@ -101,15 +104,14 @@
 		D8BA893D28070CCB001B6510 /* Armageddon */ = {
 			isa = PBXGroup;
 			children = (
+				D8BA894C28070CD4001B6510 /* Info.plist */,
+				D8BA894728070CD4001B6510 /* Assets.xcassets */,
+				D8BA894428070CCB001B6510 /* Main.storyboard */,
 				D87141B0280AC802006ED9C0 /* Cells */,
+				D80E7C7228105167001CB43D /* Extensions */,
 				D8BA895328070E22001B6510 /* Model */,
 				D8E94A27280C639D00477C92 /* SupportingFiles */,
 				D8E94A24280C636F00477C92 /* ViewControllers */,
-				D8BA894428070CCB001B6510 /* Main.storyboard */,
-				D8BA894728070CD4001B6510 /* Assets.xcassets */,
-				D8BA894928070CD4001B6510 /* LaunchScreen.storyboard */,
-				D8BA894C28070CD4001B6510 /* Info.plist */,
-				D80E7C7228105167001CB43D /* Extensions */,
 			);
 			path = Armageddon;
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 		D8E94A27280C639D00477C92 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				D8BA894928070CD4001B6510 /* LaunchScreen.storyboard */,
 				D8BA893E28070CCB001B6510 /* AppDelegate.swift */,
 				D8BA894028070CCB001B6510 /* SceneDelegate.swift */,
 			);
@@ -202,6 +205,7 @@
 			files = (
 				D8E94A32280C7E1100477C92 /* DescriptionTableViewCell.xib in Resources */,
 				D8E94A2D280C76BF00477C92 /* ChangeDistanceTableViewCell.xib in Resources */,
+				D83C051628130CC3004A5971 /* AsteroidTableViewCell.xib in Resources */,
 				D8BA894B28070CD4001B6510 /* LaunchScreen.storyboard in Resources */,
 				D8BA894828070CD4001B6510 /* Assets.xcassets in Resources */,
 				D8BA894628070CCB001B6510 /* Main.storyboard in Resources */,
@@ -215,8 +219,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D83C051528130CC3004A5971 /* AsteroidTableViewCell.swift in Sources */,
 				D8E94A31280C7E1100477C92 /* DescriptionTableViewCell.swift in Sources */,
-				D8A4A7DD280B23FD006E4B54 /* AsteroidTableViewCell.swift in Sources */,
 				D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */,
 				D80E7C6B28104FF9001CB43D /* ListOfAsteroidsViewController.swift in Sources */,
 				D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */,

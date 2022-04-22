@@ -14,8 +14,12 @@ class DescriptionTableViewCell: UITableViewCell {
         return UINib(nibName: "DescriptionTableViewCell", bundle: nil)
     }
 
-    @IBOutlet weak var descriptionText: UILabel!
-    @IBOutlet weak var showHazards: UISwitch!
+    @IBOutlet weak var descriptionText: UILabel!    
+    @IBOutlet weak var showHazards: UISwitch! {
+        didSet {
+            showHazards.isOn = UserDefaults.standard.bool(forKey: "isHazard")
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,14 +33,7 @@ class DescriptionTableViewCell: UITableViewCell {
     }
     
     @IBAction func switcherAction(_ sender: UISwitch) {
-        
-        if sender.isOn {
-            FilterViewController.isHazard = true
-            print(FilterViewController.isHazard)
-        } else {
-            FilterViewController.isHazard = false
-            print(FilterViewController.isHazard)
-        }
+        UserDefaults.standard.setValue(sender.isOn, forKey: "isHazard")
     }
     
 }

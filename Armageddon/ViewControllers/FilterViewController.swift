@@ -10,9 +10,6 @@ import UIKit
 class FilterViewController: UIViewController {
 
     static let identifire = "FilterViewController"
-    static var isHazard = false
-    
-    let userDefaults = UserDefaults.standard
     
     @IBOutlet weak var filterTableView: UITableView!
     
@@ -22,11 +19,6 @@ class FilterViewController: UIViewController {
         
         filterTableView.dataSource = self
         filterTableView.delegate = self
-        
-        filterTableView.tableFooterView = UIView()
-        filterTableView.layer.cornerRadius = 10
-        filterTableView.clipsToBounds = true
-        filterTableView.layer.masksToBounds = true
         
         // Регистрация ячеек
         filterTableView.register(ChangeDistanceTableViewCell.nib(), forCellReuseIdentifier: ChangeDistanceTableViewCell.identifire)
@@ -38,17 +30,11 @@ class FilterViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(apply(_:)))
-        
         navigationItem.rightBarButtonItem = applyButton
     }
     
     @objc func apply(_ sender: Any) {
-        
-        if FilterViewController.isHazard {
-            let vc = storyboard?.instantiateViewController(
-                identifier: ListOfAsteroidsViewController.identifire) as! ListOfAsteroidsViewController
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -71,17 +57,10 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
             
         } else if indexPath.row == 1 {
             if let hazardCell = filterTableView.dequeueReusableCell(withIdentifier: "DescriptionCellId", for: indexPath) as? DescriptionTableViewCell {
-                
-                if hazardCell.showHazards.isOn {
-                    FilterViewController.isHazard = true
-                } else {
-                    FilterViewController.isHazard = false
-                }
-                
+            
             return hazardCell
             }
         }
         return UITableViewCell()
     }
 }
- 

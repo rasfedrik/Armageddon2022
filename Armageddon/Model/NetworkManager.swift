@@ -13,7 +13,7 @@ class NetworkManager {
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
-    private let baseURL = URL(string: "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&api_key=")
+    private let baseURL = URL(string: "https://api.nasa.gov/neo/rest/v1/feed?start_date=2022-09-07&api_key=")
 
     func obtainAsteroids(completion: @escaping (SpaceObjects) -> Void) {
 
