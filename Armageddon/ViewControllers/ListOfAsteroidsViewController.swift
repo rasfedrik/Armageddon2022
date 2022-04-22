@@ -9,9 +9,8 @@ class ListOfAsteroidsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     static let identifire = "ListOfAsteroidsViewController"
-
+    
     private let networkManager = NetworkManager()
-
     private var data: SpaceObjects?
     private var dates = [String]() {
         didSet {
@@ -23,13 +22,16 @@ class ListOfAsteroidsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(AsteroidTableViewCell.nib(), forCellReuseIdentifier: AsteroidTableViewCell.identifire)
+        // Регистрация ячейки
+        tableView.register(AsteroidTableViewCell.nib(),
+                           forCellReuseIdentifier: AsteroidTableViewCell.identifire)
         
         navigationItem.title = "Армагеддон 2022"
         tableView.dataSource = self
         tableView.delegate = self
         obtainInformationAboutObjects()
         
+        // Кнопка перехода к экрану фильтра
         let filterButton = UIBarButtonItem(
             image: UIImage(systemName: "line.horizontal.3.decrease"),
             style: .plain,
@@ -43,7 +45,7 @@ class ListOfAsteroidsViewController: UIViewController {
         self.tableView.reloadData()
     }
     
-
+    // Функция перехода к экрану фильтра
     @objc func goToFilter() {
         let filterVC = storyboard?.instantiateViewController(identifier: FilterViewController.identifire) as! FilterViewController
         navigationController?.pushViewController(filterVC, animated: true)
@@ -71,6 +73,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
         guard let data = data else { return 0 }
         guard var objects = data.nearEarthObjects?[dates[section]]! else { return 0 }
         
+        // Отображать все астеройды или только опасные
         if UserDefaults.standard.bool(forKey: "isHazard") {
             objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
         }
@@ -85,6 +88,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             guard let data = data else { return UITableViewCell() }
             guard var objects = data.nearEarthObjects?[dates[indexPath.section]]! else { return UITableViewCell() }
             
+            // Отображать все астеройды или только опасные
             if UserDefaults.standard.bool(forKey: "isHazard") {
                 objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
             }
@@ -92,20 +96,25 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             let object = objects[indexPath.row]
             guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
             
+            
+            // Название астеройда
             cell.headerViewLabel.text = object.name
             
+            
+            // Общая информация
             if let closeData = object.closeApproachData,
                let date = closeData.first?.closeApproachDate,
                let distance = closeData.first?.missDistance {
                 cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
                 
-                
+                // Дистанция
                 if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
                     cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
                 } else {
                     cell.rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
                 }
             }
+            
             
             // Оценка опасности объекта
             cell.gradient(isDanger: isHazard)
@@ -117,13 +126,15 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 cell.gradeLabel.textColor = .black
             }
 
-
+            
             // Размер объекта
-            let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin
-            let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
-
-            cell.diameterLabel.text = "Диаметр \(minDiametr!.average(x: Double(maxDiametr!))) м"
-
+            guard let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin,
+                  let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
+            else {
+                return UITableViewCell()
+            }
+            cell.diameterLabel.text = "Диаметр \(minDiametr.average(x: Double(maxDiametr))) м"
+            
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in
@@ -138,12 +149,14 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Переход к описанию астеройда
         let descriptionVC = storyboard?.instantiateViewController(identifier: DescriptionAsteroidViewController.identifire) as! DescriptionAsteroidViewController
         
-        let path = data?.nearEarthObjects?[dates[indexPath.section]]![indexPath.row]
-        navigationController?.pushViewController(descriptionVC, animated: true)
-        
-        descriptionVC.title = path?.name
+        if let path = data?.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] {
+            navigationController?.pushViewController(descriptionVC, animated: true)
+            descriptionVC.title = path.name
+        }
     }
 }
 

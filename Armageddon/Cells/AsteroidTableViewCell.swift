@@ -26,7 +26,7 @@ class AsteroidTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        mainView.layer.masksToBounds = true
+        mainView.layer.masksToBounds = true
         mainView.layer.cornerRadius = 10
         mainView.clipsToBounds = true
         destroyButton.backgroundColor = .systemBlue
