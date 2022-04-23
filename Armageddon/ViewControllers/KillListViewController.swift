@@ -17,7 +17,11 @@ class KillListViewController: UIViewController {
         var values : [SpaceObjects.NearEarthObject]?
     }
 
-    static var killListArray = [Objects]()
+    static var killListArray = [Objects]() 
+//        didSet {
+//            UserDefaults.standard.setValue(oldValue, forKey: "killListArrayKey")
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

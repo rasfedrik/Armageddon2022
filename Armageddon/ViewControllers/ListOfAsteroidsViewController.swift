@@ -64,7 +64,6 @@ class ListOfAsteroidsViewController: UIViewController {
 
 // Таблица
 extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         dates.count
     }
@@ -138,10 +137,21 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in
-                KillListViewController.killListArray.append(
-                    KillListViewController.Objects(keys: self?.dates[indexPath.section] ?? "",
-                                                   values: [object]))
+                
+                guard let asteroidKey = self?.dates[indexPath.section] else { return }
+                
+                if KillListViewController.killListArray.contains(where: { item -> Bool in
+                    item.keys == asteroidKey && item.values == [object]
+                }) {
+                    KillListViewController.killListArray.remove(at: indexPath.row)
+                } else {
+//                    UserDefaults.standard.object(forKey: "killListArrayKey")
+                    KillListViewController.killListArray.append(
+                        KillListViewController.Objects(keys: asteroidKey,
+                                                       values: [object]))
+                }
             }
+            
             return cell
         }
         return UITableViewCell()
@@ -159,5 +169,3 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
         }
     }
 }
-
-
