@@ -41,7 +41,7 @@ class AsteroidTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    // Кнопка отправляющая астеройд на уничтожение
+    // Кнопка отправляющая астероид на уничтожение
     @IBAction func destroyButtonAction(_ sender: UIButton) {
         buttonAction?()
     }

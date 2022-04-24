@@ -52,12 +52,11 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
     
         if indexPath.row == 0 {
             if let distanceCell = filterTableView.dequeueReusableCell(withIdentifier: "ChangeDistanceCellId", for: indexPath) as? ChangeDistanceTableViewCell {
-                return distanceCell
+            return distanceCell
             }
             
         } else if indexPath.row == 1 {
             if let hazardCell = filterTableView.dequeueReusableCell(withIdentifier: "DescriptionCellId", for: indexPath) as? DescriptionTableViewCell {
-            
             return hazardCell
             }
         }

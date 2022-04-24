@@ -9,7 +9,7 @@ class ListOfAsteroidsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     static let identifire = "ListOfAsteroidsViewController"
-    
+
     private let networkManager = NetworkManager()
     private var data: SpaceObjects?
     private var dates = [String]() {
@@ -87,6 +87,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             guard let data = data else { return UITableViewCell() }
             guard var objects = data.nearEarthObjects?[dates[indexPath.section]]! else { return UITableViewCell() }
             
+            
             // Отображать все астеройды или только опасные
             if UserDefaults.standard.bool(forKey: "isHazard") {
                 objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
@@ -132,7 +133,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             else {
                 return UITableViewCell()
             }
-            cell.diameterLabel.text = "Диаметр \(minDiametr.average(x: Double(maxDiametr))) м"
+            cell.diameterLabel.text = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
             
             
             // Добавление астеройда в список на уничтожение
@@ -140,18 +141,16 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 
                 guard let asteroidKey = self?.dates[indexPath.section] else { return }
                 
+                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [object])
+                
                 if KillListViewController.killListArray.contains(where: { item -> Bool in
                     item.keys == asteroidKey && item.values == [object]
                 }) {
                     KillListViewController.killListArray.remove(at: indexPath.row)
                 } else {
-//                    UserDefaults.standard.object(forKey: "killListArrayKey")
-                    KillListViewController.killListArray.append(
-                        KillListViewController.Objects(keys: asteroidKey,
-                                                       values: [object]))
+                    KillListViewController.killListArray.append(asteroid)
                 }
             }
-            
             return cell
         }
         return UITableViewCell()
@@ -159,13 +158,18 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
         
         // Переход к описанию астеройда
-        let descriptionVC = storyboard?.instantiateViewController(identifier: DescriptionAsteroidViewController.identifire) as! DescriptionAsteroidViewController
+        let vc = storyboard?.instantiateViewController(identifier: DescriptionAsteroidViewController.identifire) as! DescriptionAsteroidViewController
         
         if let path = data?.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] {
-            navigationController?.pushViewController(descriptionVC, animated: true)
-            descriptionVC.title = path.name
+            vc.title = path.name
+            vc.nameText = path.name ?? ""
+            
         }
+        
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

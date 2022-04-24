@@ -12,20 +12,16 @@ class KillListViewController: UIViewController {
     @IBOutlet weak var tableViewKillList: UITableView!
     private let networkManager = NetworkManager()
 
-    struct Objects {
+    struct Objects: Codable {
         var keys : String?
         var values : [SpaceObjects.NearEarthObject]?
     }
-
-    static var killListArray = [Objects]() 
-//        didSet {
-//            UserDefaults.standard.setValue(oldValue, forKey: "killListArrayKey")
-//        }
-//    }
+    
+    static var killListArray = [Objects]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "Список на уничтожение"
         
         // Регистрация ячейки
@@ -38,6 +34,7 @@ class KillListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
         self.tableViewKillList.reloadData()
     }
 }
@@ -56,15 +53,17 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
-            
+        
+        
         cell.destroyButton.isHidden = true
  
         guard let data = KillListViewController.killListArray[indexPath.section].values?[indexPath.row] else { return UITableViewCell() }
             
             
-        // Название астеройда
+        // Название астероида
         cell.headerViewLabel.text = data.name
-        
+
+            
         // Общая информация
         if let closeData = data.closeApproachData,
            let date = closeData.first?.closeApproachDate,

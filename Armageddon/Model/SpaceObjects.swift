@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
+    
 struct SpaceObjects: Codable {
     let nearEarthObjects: [String: [NearEarthObject]]?
     
+
     struct NearEarthObject: Codable, Equatable {
         static func == (lhs: SpaceObjects.NearEarthObject, rhs: SpaceObjects.NearEarthObject) -> Bool {
             return
@@ -70,3 +71,4 @@ struct SpaceObjects: Codable {
         let orbitClassType, orbitClassDescription, orbitClassRange: String?
     }
 }
+

@@ -23,7 +23,7 @@ class ChangeDistanceTableViewCell: UITableViewCell {
     }
     
     @IBAction func unitsValueAction(_ sender: UISegmentedControl) {
-        UserDefaults.standard.setValue(sender.selectedSegmentIndex, forKey: "unitsType")
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "unitsType")
     }
     
     
