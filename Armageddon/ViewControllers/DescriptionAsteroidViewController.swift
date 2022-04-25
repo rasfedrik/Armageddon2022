@@ -11,8 +11,11 @@ class DescriptionAsteroidViewController: UIViewController {
     
     static let identifire = "DescriptionAsteroidViewController"
 
+    private let networkManager = NetworkManager()
+
+    static var asteroidDescription: [AsteroidData]?
+    
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var diametrLabel: UILabel!
@@ -22,41 +25,65 @@ class DescriptionAsteroidViewController: UIViewController {
     @IBOutlet weak var orbitLabel: UILabel!
     @IBOutlet weak var isHazardLabel: UILabel!
     @IBOutlet weak var destroyButton: UIButton!
+    @IBOutlet weak var flightTimeLabel: UILabel!
+    @IBOutlet weak var flightDistanceLabel: UILabel!
     
-    var nameText = ""
-    var diametrText = ""
-    var speedText = ""
-    var approachText = ""
-    var distanceText = ""
-    var orbitText = ""
-    var isHazardText = ""
+    var buttonAction: (() -> ())?
+    
+    var asteroidId = ""
+//    var nameText = ""
+//    var diametrText = ""
+//    var speedText = ""
+//    var approachText = ""
+//    var distanceText = ""
+//    var orbitText = ""
+//    var isHazardText = ""
+//    var flightTimeText = ""
+//    var flightDistanceText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = nameText
-        diametrLabel.text = diametrText
-        speedLabel.text = speedText
-        approachTime.text = approachText
-        distanceLabel.text = distanceText
-        orbitLabel.text = orbitText
-        isHazardLabel.text = isHazardText
-        
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
-    }
-}
+        asteroidData()
+        descriptionView.layer.cornerRadius = 10
+        descriptionView.clipsToBounds = true
 
-extension DescriptionAsteroidViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        
+//        if isHazardText == "Опасен" {
+//            isHazardLabel.textColor = .red
+//        }
+//        isHazardLabel.text = isHazardText
+        
+        
+        
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") {
-            cell.textLabel?.text = "1"
-            return cell
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+    }
+    
+    
+    // Получение информации об объектах
+    func asteroidData() {
+        networkManager.asteroidData(id: asteroidId) { result in
+            DescriptionAsteroidViewController.asteroidDescription?.append(result)
+
+            DispatchQueue.main.async {
+                
+                self.nameLabel.text = result.name!
+                self.speedLabel.text = "\((result.closeApproachData?.first?.relativeVelocity?.kilometersPerSecond) ?? "нет данных") км/с"
+                self.approachTime.text = "approachText"
+                self.distanceLabel.text = "distanceText"
+                self.orbitLabel.text = result.closeApproachData?.first?.orbitingBody?.rawValue
+                self.flightTimeLabel.text = "flightTimeText"
+                self.flightDistanceLabel.text = "flightDistanceText"
+            }
         }
-        return UITableViewCell()
     }
 
+    @IBAction func addKillList(_ sender: UIButton) {
+        buttonAction?()
+    }
 }
+

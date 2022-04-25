@@ -27,6 +27,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etj-rs-K8P">
                                 <rect key="frame" x="0.0" y="0.0" width="374" height="140.5"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dinosaur" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-Xg-qJ8">
+                                        <rect key="frame" x="327" y="110.5" width="35" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0sx-gH-SE0"/>
+                                            <constraint firstAttribute="width" constant="35" id="UDx-vQ-8mg"/>
+                                        </constraints>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021 QQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hw-aa-Ph6">
                                         <rect key="frame" x="16" y="103.5" width="342" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -38,6 +45,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7hw-aa-Ph6" secondAttribute="trailing" constant="16" id="07C-KV-qYK"/>
                                     <constraint firstItem="7hw-aa-Ph6" firstAttribute="leading" secondItem="etj-rs-K8P" secondAttribute="leading" constant="16" id="U6X-fE-dHl"/>
+                                    <constraint firstAttribute="bottom" secondItem="23Q-Xg-qJ8" secondAttribute="bottom" id="cG6-yV-62d"/>
+                                    <constraint firstAttribute="trailing" secondItem="23Q-Xg-qJ8" secondAttribute="trailing" constant="12" id="fpL-Y5-Tcs"/>
                                     <constraint firstAttribute="bottom" secondItem="7hw-aa-Ph6" secondAttribute="bottom" constant="8" id="j4U-xy-NAG"/>
                                 </constraints>
                             </view>
@@ -133,6 +142,7 @@
             <connections>
                 <outlet property="destroyButton" destination="Gw0-Vz-tYF" id="8gt-0B-aGD"/>
                 <outlet property="diameterLabel" destination="avP-YL-6fo" id="PuE-cD-Tt1"/>
+                <outlet property="dinoImage" destination="23Q-Xg-qJ8" id="nWT-EO-N3G"/>
                 <outlet property="flightTimeLabel" destination="XoA-Rj-nhI" id="8aE-Ot-0g4"/>
                 <outlet property="gradeLabel" destination="gSL-UK-Xa1" id="793-ZD-bOY"/>
                 <outlet property="headerView" destination="etj-rs-K8P" id="J3t-HQ-3E5"/>
@@ -140,10 +150,11 @@
                 <outlet property="mainView" destination="lwS-TU-qho" id="ZBB-iv-n8e"/>
                 <outlet property="rangeLabel" destination="CW5-in-z7x" id="BKS-wG-iU1"/>
             </connections>
-            <point key="canvasLocation" x="-293" y="-81"/>
+            <point key="canvasLocation" x="-294.20289855072468" y="-81.361607142857139"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="dinosaur" width="35" height="30"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

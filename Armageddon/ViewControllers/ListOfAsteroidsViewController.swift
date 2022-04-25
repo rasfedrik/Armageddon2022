@@ -22,6 +22,7 @@ class ListOfAsteroidsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Регистрация ячейки
         tableView.register(AsteroidTableViewCell.nib(),
                            forCellReuseIdentifier: AsteroidTableViewCell.identifire)
@@ -71,12 +72,12 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = data else { return 0 }
         guard var objects = data.nearEarthObjects?[dates[section]]! else { return 0 }
-        
-        // Отображать все астеройды или только опасные
+
+//         Отображать все астеройды или только опасные
         if UserDefaults.standard.bool(forKey: "isHazard") {
             objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
         }
-        
+
         return objects.count
     }
     
@@ -125,6 +126,8 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 cell.gradeLabel.text = "Не опасен"
                 cell.gradeLabel.textColor = .black
             }
+            
+
 
             
             // Размер объекта
@@ -158,18 +161,81 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
-        
+
         // Переход к описанию астеройда
         let vc = storyboard?.instantiateViewController(identifier: DescriptionAsteroidViewController.identifire) as! DescriptionAsteroidViewController
         
         if let path = data?.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] {
             vc.title = path.name
-            vc.nameText = path.name ?? ""
+
+            vc.asteroidId = path.id!
+//                self.networkManager.asteroidData(id: path.id!) { result in
+                    
+//                    print("result \(result)")
+//                    DescriptionAsteroidViewController.asteroidDescription? = result
+//                    DescriptionAsteroidViewController.asteroidDescription?.append(result)
+//                    print("asteroidDescription \(DescriptionAsteroidViewController.asteroidDescription)")
+//                }
             
+            
+
+                        
+//            vc.nameText = path.name ?? ""
+//
+//            if let closeData = path.closeApproachData,
+//               let date = closeData.first?.closeApproachDate,
+//               let distance = closeData.first?.missDistance {
+//                vc.flightTimeText = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+//
+//                // Дистанция
+//                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
+//                    vc.flightDistanceText = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+//                } else {
+//                    vc.flightDistanceText = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
+//                }
+//            }
+//
+//
+//            // Оценка опасности объекта
+//            if path.isPotentiallyHazardousAsteroid! {
+//                vc.isHazardText = "Опасен"
+//            } else {
+//                vc.isHazardText = "Не опасен"
+//            }
+//
+//
+//            guard let minDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMin,
+//                  let maxDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMax
+//            else {
+//                return
+//            }
+//            vc.diametrText = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
+//
+//
+//            // Кнопка
+//
+//            vc.buttonAction = { [weak self] in
+//
+//                guard let asteroidKey = self?.dates[indexPath.section] else { return }
+//
+//                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [path])
+//
+//                if KillListViewController.killListArray.contains(where: { item -> Bool in
+//                    item.keys == asteroidKey && item.values == [path]
+//                }) {
+//                    KillListViewController.killListArray.remove(at: indexPath.row)
+//                } else {
+//                    KillListViewController.killListArray.append(asteroid)
+//                }
+//            }
+
+            
+            // Орбита
+//            vc.orbitText = (path.closeApproachData![indexPath.row].orbitingBody)!
+
+            // Скорость
+//            vc.speedText = (path.closeApproachData![indexPath.row].relativeVelocity?.kilometersPerHour)!
         }
-        
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

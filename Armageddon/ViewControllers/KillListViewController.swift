@@ -11,7 +11,7 @@ class KillListViewController: UIViewController {
 
     @IBOutlet weak var tableViewKillList: UITableView!
     private let networkManager = NetworkManager()
-
+    
     struct Objects: Codable {
         var keys : String?
         var values : [SpaceObjects.NearEarthObject]?
