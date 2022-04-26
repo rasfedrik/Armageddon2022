@@ -80,7 +80,7 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Оценка опасности объекта
         guard let isHazard = data.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-        cell.gradient(isDanger: isHazard)
+//        cell.gradient(isDanger: isHazard)
         if isHazard {
             cell.gradeLabel.text = "Опасен"
             cell.gradeLabel.textColor = .red

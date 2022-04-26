@@ -145,7 +145,7 @@
                 <outlet property="dinoImage" destination="23Q-Xg-qJ8" id="nWT-EO-N3G"/>
                 <outlet property="flightTimeLabel" destination="XoA-Rj-nhI" id="8aE-Ot-0g4"/>
                 <outlet property="gradeLabel" destination="gSL-UK-Xa1" id="793-ZD-bOY"/>
-                <outlet property="headerView" destination="etj-rs-K8P" id="J3t-HQ-3E5"/>
+                <outlet property="headerView" destination="etj-rs-K8P" id="wcp-SJ-FQb"/>
                 <outlet property="headerViewLabel" destination="7hw-aa-Ph6" id="61H-m6-D0e"/>
                 <outlet property="mainView" destination="lwS-TU-qho" id="ZBB-iv-n8e"/>
                 <outlet property="rangeLabel" destination="CW5-in-z7x" id="BKS-wG-iU1"/>

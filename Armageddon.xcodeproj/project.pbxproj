@@ -22,6 +22,8 @@
 		D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895428070E48001B6510 /* SpaceObjects.swift */; };
 		D8BA895928071A5E001B6510 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA895828071A5E001B6510 /* NetworkManager.swift */; };
 		D8CC4D162816524B004D057E /* DataAboutAsteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC4D152816524B004D057E /* DataAboutAsteroid.swift */; };
+		D8CC4D1C2817B387004D057E /* ApproachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC4D1A2817B387004D057E /* ApproachTableViewCell.swift */; };
+		D8CC4D1D2817B387004D057E /* ApproachTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC4D1B2817B387004D057E /* ApproachTableViewCell.xib */; };
 		D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E94A21280C5D1E00477C92 /* FilterViewController.swift */; };
 		D8E94A2C280C76BF00477C92 /* ChangeDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */; };
 		D8E94A2D280C76BF00477C92 /* ChangeDistanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */; };
@@ -47,6 +49,8 @@
 		D8BA895428070E48001B6510 /* SpaceObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceObjects.swift; sourceTree = "<group>"; };
 		D8BA895828071A5E001B6510 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D8CC4D152816524B004D057E /* DataAboutAsteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAboutAsteroid.swift; sourceTree = "<group>"; };
+		D8CC4D1A2817B387004D057E /* ApproachTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachTableViewCell.swift; sourceTree = "<group>"; };
+		D8CC4D1B2817B387004D057E /* ApproachTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApproachTableViewCell.xib; sourceTree = "<group>"; };
 		D8E94A21280C5D1E00477C92 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		D8E94A2A280C76BF00477C92 /* ChangeDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDistanceTableViewCell.swift; sourceTree = "<group>"; };
 		D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeDistanceTableViewCell.xib; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				D8E94A2B280C76BF00477C92 /* ChangeDistanceTableViewCell.xib */,
 				D8E94A2F280C7E1100477C92 /* DescriptionTableViewCell.swift */,
 				D8E94A30280C7E1100477C92 /* DescriptionTableViewCell.xib */,
+				D8CC4D1A2817B387004D057E /* ApproachTableViewCell.swift */,
+				D8CC4D1B2817B387004D057E /* ApproachTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E94A32280C7E1100477C92 /* DescriptionTableViewCell.xib in Resources */,
+				D8CC4D1D2817B387004D057E /* ApproachTableViewCell.xib in Resources */,
 				D8E94A2D280C76BF00477C92 /* ChangeDistanceTableViewCell.xib in Resources */,
 				D83C051628130CC3004A5971 /* AsteroidTableViewCell.xib in Resources */,
 				D8BA894B28070CD4001B6510 /* LaunchScreen.storyboard in Resources */,
@@ -228,6 +235,7 @@
 				D8BA895528070E48001B6510 /* SpaceObjects.swift in Sources */,
 				D80E7C6B28104FF9001CB43D /* ListOfAsteroidsViewController.swift in Sources */,
 				D8E94A22280C5D1E00477C92 /* FilterViewController.swift in Sources */,
+				D8CC4D1C2817B387004D057E /* ApproachTableViewCell.swift in Sources */,
 				D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */,
 				D836251E280EFD3D008776B7 /* KillListViewController.swift in Sources */,
 				D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */,

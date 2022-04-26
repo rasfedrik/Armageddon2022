@@ -91,12 +91,13 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             
             // Отображать все астеройды или только опасные
             if UserDefaults.standard.bool(forKey: "isHazard") {
-                objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
+
+                objects = objects.filter{ $0.isPotentiallyHazardousAsteroid! }
             }
             
             let object = objects[indexPath.row]
             guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-            
+            cell.gradient(isDanger: isHazard)
             
             // Название астеройда
             cell.headerViewLabel.text = object.name
@@ -122,13 +123,11 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             if isHazard {
                 cell.gradeLabel.text = "Опасен"
                 cell.gradeLabel.textColor = .red
-            } else {
+                } else {
                 cell.gradeLabel.text = "Не опасен"
                 cell.gradeLabel.textColor = .black
             }
             
-
-
             
             // Размер объекта
             guard let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin,
@@ -137,6 +136,15 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 return UITableViewCell()
             }
             cell.diameterLabel.text = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
+
+            let size = Int(minDiametr.average(x: Double(maxDiametr)))!
+            if size <= 100 {
+                cell.asteroid.image = cell.small
+            } else if size > 100 && size < 300 {
+                cell.asteroid.image = cell.middle
+            } else {
+                cell.asteroid.image = cell.big
+            }
             
             
             // Добавление астеройда в список на уничтожение
@@ -168,73 +176,45 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
         if let path = data?.nearEarthObjects?[dates[indexPath.section]]![indexPath.row] {
             vc.title = path.name
 
-            vc.asteroidId = path.id!
-//                self.networkManager.asteroidData(id: path.id!) { result in
-                    
-//                    print("result \(result)")
-//                    DescriptionAsteroidViewController.asteroidDescription? = result
-//                    DescriptionAsteroidViewController.asteroidDescription?.append(result)
-//                    print("asteroidDescription \(DescriptionAsteroidViewController.asteroidDescription)")
-//                }
-            
+            DescriptionAsteroidViewController.asteroidId = path.id!
+
+            if let closeData = path.closeApproachData,
+               let date = closeData.first?.closeApproachDate,
+               let distance = closeData.first?.missDistance {
+                vc.flightTimeText = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+                
+                // Дистанция
+                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
+                    vc.flightDistanceText = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+                } else {
+                    vc.flightDistanceText = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
+                }
+            }
             
 
-                        
-//            vc.nameText = path.name ?? ""
-//
-//            if let closeData = path.closeApproachData,
-//               let date = closeData.first?.closeApproachDate,
-//               let distance = closeData.first?.missDistance {
-//                vc.flightTimeText = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-//
-//                // Дистанция
-//                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
-//                    vc.flightDistanceText = "на расстояние \((distance.kilometers!.cleanPrice())) км"
-//                } else {
-//                    vc.flightDistanceText = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
-//                }
-//            }
-//
-//
-//            // Оценка опасности объекта
-//            if path.isPotentiallyHazardousAsteroid! {
-//                vc.isHazardText = "Опасен"
-//            } else {
-//                vc.isHazardText = "Не опасен"
-//            }
-//
-//
-//            guard let minDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMin,
-//                  let maxDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMax
-//            else {
-//                return
-//            }
-//            vc.diametrText = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
-//
-//
-//            // Кнопка
-//
-//            vc.buttonAction = { [weak self] in
-//
-//                guard let asteroidKey = self?.dates[indexPath.section] else { return }
-//
-//                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [path])
-//
-//                if KillListViewController.killListArray.contains(where: { item -> Bool in
-//                    item.keys == asteroidKey && item.values == [path]
-//                }) {
-//                    KillListViewController.killListArray.remove(at: indexPath.row)
-//                } else {
-//                    KillListViewController.killListArray.append(asteroid)
-//                }
-//            }
+            guard let minDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMin,
+                  let maxDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMax
+            else {
+                return
+            }
+            vc.diametrText = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
 
             
-            // Орбита
-//            vc.orbitText = (path.closeApproachData![indexPath.row].orbitingBody)!
+            // Кнопка
+            vc.buttonAction = { [weak self] in
 
-            // Скорость
-//            vc.speedText = (path.closeApproachData![indexPath.row].relativeVelocity?.kilometersPerHour)!
+                guard let asteroidKey = self?.dates[indexPath.section] else { return }
+
+                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [path])
+
+                if KillListViewController.killListArray.contains(where: { item -> Bool in
+                    item.keys == asteroidKey && item.values == [path]
+                }) {
+                    KillListViewController.killListArray.remove(at: indexPath.row)
+                } else {
+                    KillListViewController.killListArray.append(asteroid)
+                }
+            }
         }
         navigationController?.pushViewController(vc, animated: true)
     }

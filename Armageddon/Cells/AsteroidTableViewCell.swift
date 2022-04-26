@@ -14,12 +14,15 @@ class AsteroidTableViewCell: UITableViewCell {
     }
     
     var asteroid: UIImageView = {
-        var image = UIImageView(image: UIImage(named: "small_asteroid"), highlightedImage: .none)
-//        image.image = UIImage(named: "small_asteroid")
+        var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
+
+    let small = UIImage(named: "small_asteroid")
+    let middle = UIImage(named: "middle_asteroid")
+    let big = UIImage(named: "big_asteroid")
+
     @IBOutlet weak var dinoImage: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var mainView: UIView!
@@ -34,6 +37,7 @@ class AsteroidTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         setupConstraints()
         mainView.layer.masksToBounds = true
         mainView.layer.cornerRadius = 10
@@ -64,6 +68,7 @@ class AsteroidTableViewCell: UITableViewCell {
         asteroid.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 27).isActive = true
         asteroid.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -61).isActive = true
     }
+    
     
     // Градиент headerView
     func gradient(isDanger: Bool) {

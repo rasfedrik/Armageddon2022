@@ -9,22 +9,23 @@ struct AsteroidData: Codable {
     let estimatedDiameter: EstimatedDiameter?
     let isPotentiallyHazardousAsteroid: Bool?
     let closeApproachData: [CloseApproachDatum]?
-    let orbitalData: OrbitalData?
     let isSentryObject: Bool?
 
     struct CloseApproachDatum: Codable {
         
         enum OrbitingBody: String, Codable {
-            case earth
-            case merc
-            case venus
+            case merc = "Меркурий"
+            case venus = "Венера"
+            case earth = "Земля"
+            case mars = "Марс"
             
             init(from decoder: Decoder) throws {
                   let label = try decoder.singleValueContainer().decode(String.self)
                   switch label {
-                     case "earth": self = .earth
-                     case "merc": self = .merc
-                    default: self = .venus
+                    case "Merc": self = .merc
+                    case "Venus": self = .venus
+                    case "Earth": self = .earth
+                    default: self = .mars
                   }
             }
         }
@@ -50,20 +51,6 @@ struct AsteroidData: Codable {
 
     struct Feet: Codable {
         let estimatedDiameterMin, estimatedDiameterMax: Double?
-    }
-
-    struct OrbitalData: Codable {
-        let orbitID, orbitDeterminationDate, firstObservationDate, lastObservationDate: String?
-        let dataArcInDays, observationsUsed: Int?
-        let orbitUncertainty, minimumOrbitIntersection, jupiterTisserandInvariant, epochOsculation: String?
-        let eccentricity, semiMajorAxis, inclination, ascendingNodeLongitude: String?
-        let orbitalPeriod, perihelionDistance, perihelionArgument, aphelionDistance: String?
-        let perihelionTime, meanAnomaly, meanMotion, equinox: String?
-        let orbitClass: OrbitClass?
-    }
-    
-    struct OrbitClass: Codable {
-        let orbitClassType, orbitClassRange, orbitClassDescription: String?
     }
 }
 

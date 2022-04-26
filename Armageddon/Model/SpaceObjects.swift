@@ -56,19 +56,5 @@ struct SpaceObjects: Codable {
     struct Diametr: Codable, Equatable {
         let estimatedDiameterMin, estimatedDiameterMax: Double?
     }
-
-    struct OrbitalData: Codable {
-        let orbitID, orbitDeterminationDate, firstObservationDate, lastObservationDate: String?
-        let dataArcInDays, observationsUsed: Int?
-        let orbitUncertainty, minimumOrbitIntersection, jupiterTisserandInvariant, epochOsculation: String?
-        let eccentricity, semiMajorAxis, inclination, ascendingNodeLongitude: String?
-        let orbitalPeriod, perihelionDistance, perihelionArgument, aphelionDistance: String?
-        let perihelionTime, meanAnomaly, meanMotion, equinox: String?
-        let orbitClass: OrbitClass?
-    }
-
-    struct OrbitClass: Codable, Equatable {
-        let orbitClassType, orbitClassDescription, orbitClassRange: String?
-    }
 }
 

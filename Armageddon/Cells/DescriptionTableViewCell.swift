@@ -35,5 +35,5 @@ class DescriptionTableViewCell: UITableViewCell {
     @IBAction func switcherAction(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "isHazard")
     }
-    
+
 }

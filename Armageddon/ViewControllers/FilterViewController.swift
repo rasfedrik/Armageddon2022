@@ -32,6 +32,10 @@ class FilterViewController: UIViewController {
             action: #selector(apply(_:)))
         navigationItem.rightBarButtonItem = applyButton
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        filterTableView.reloadData()
+    }
     
     @objc func apply(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
