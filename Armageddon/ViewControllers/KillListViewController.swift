@@ -12,12 +12,11 @@ class KillListViewController: UIViewController {
     @IBOutlet weak var tableViewKillList: UITableView!
     private let networkManager = NetworkManager()
     
-    struct Objects: Codable {
-        var keys : String?
-        var values : [SpaceObjects.NearEarthObject]?
+    static var killListArray: [Objects] = Objects.load() {
+        didSet {
+            Objects.save(killListArray)
+        }
     }
-    
-    static var killListArray = [Objects]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,6 @@ class KillListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
         self.tableViewKillList.reloadData()
     }
 }
@@ -54,8 +52,12 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
         
-        
-        cell.destroyButton.isHidden = true
+//            cell.destroyButton.setTitle("Вернуть", for: .normal)
+//            cell.destroyButton.backgroundColor = .red
+//            cell.buttonAction { [weak self] in
+//                
+//                
+//            }
  
         guard let data = KillListViewController.killListArray[indexPath.section].values?[indexPath.row] else { return UITableViewCell() }
             

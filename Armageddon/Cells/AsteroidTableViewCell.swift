@@ -32,6 +32,15 @@ class AsteroidTableViewCell: UITableViewCell {
     @IBOutlet weak var gradeLabel: UILabel!
     @IBOutlet weak var headerViewLabel: UILabel!
     @IBOutlet weak var destroyButton: UIButton!
+//    {
+//        didSet {
+//            if UserDefaults.standard.bool(forKey: "colorButton") {
+//                destroyButton.backgroundColor = .red
+//            } else {
+//                destroyButton.backgroundColor = .systemBlue
+//            }
+//        }
+//    }
     
     var buttonAction: (() -> ())?
     
@@ -43,6 +52,7 @@ class AsteroidTableViewCell: UITableViewCell {
         mainView.layer.cornerRadius = 10
         mainView.clipsToBounds = true
         destroyButton.backgroundColor = .systemBlue
+        
     }
 
 

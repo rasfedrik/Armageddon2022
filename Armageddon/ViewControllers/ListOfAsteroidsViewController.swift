@@ -145,27 +145,33 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             } else {
                 cell.asteroid.image = cell.big
             }
+
             
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in
-                
+
                 guard let asteroidKey = self?.dates[indexPath.section] else { return }
                 
-                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [object])
+                let asteroid = Objects(keys: asteroidKey, values: [object])
                 
                 if KillListViewController.killListArray.contains(where: { item -> Bool in
                     item.keys == asteroidKey && item.values == [object]
                 }) {
-                    KillListViewController.killListArray.remove(at: indexPath.row)
+                    KillListViewController.killListArray.remove(at: indexPath.section)
+                    cell.destroyButton.backgroundColor = .systemBlue
                 } else {
                     KillListViewController.killListArray.append(asteroid)
+                    cell.destroyButton.backgroundColor = .red
                 }
             }
+
             return cell
         }
+        
         return UITableViewCell()
     }
+    
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -198,21 +204,24 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 return
             }
             vc.diametrText = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
-
+            
             
             // Кнопка
             vc.buttonAction = { [weak self] in
 
                 guard let asteroidKey = self?.dates[indexPath.section] else { return }
 
-                let asteroid = KillListViewController.Objects(keys: asteroidKey, values: [path])
+                let asteroid = Objects(keys: asteroidKey, values: [path])
 
                 if KillListViewController.killListArray.contains(where: { item -> Bool in
                     item.keys == asteroidKey && item.values == [path]
                 }) {
                     KillListViewController.killListArray.remove(at: indexPath.row)
+//                    vc.destroyButton.backgroundColor = .systemBlue
                 } else {
                     KillListViewController.killListArray.append(asteroid)
+//                    vc.destroyButton.backgroundColor = .red
+                    
                 }
             }
         }

@@ -58,3 +58,26 @@ struct SpaceObjects: Codable {
     }
 }
 
+struct Objects: Codable {
+    var keys : String?
+    var values : [SpaceObjects.NearEarthObject]?
+}
+
+extension Objects {
+    static let userDefaultsObjects = "ObjectsKey"
+    
+    static func save(_ objects: [Objects]) {
+        let data = try? JSONEncoder().encode(objects)
+        UserDefaults.standard.set(data, forKey: Objects.userDefaultsObjects)
+    }
+    
+    static func load() -> [Objects] {
+        var returnValue: [Objects] = []
+        
+        if let data = UserDefaults.standard.data(forKey: Objects.userDefaultsObjects),
+           let objects = try? JSONDecoder().decode([Objects].self, from: data) {
+            returnValue = objects
+        }
+        return returnValue
+    }
+}
