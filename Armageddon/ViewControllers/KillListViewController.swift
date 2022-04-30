@@ -53,7 +53,7 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
  
         guard let data = KillListViewController.killListArray[indexPath.section].values?[indexPath.row] else { return UITableViewCell() }
-            
+        cell.destroyButton.isHidden = true
             
         // Название астероида
         cell.headerViewLabel.text = data.name
