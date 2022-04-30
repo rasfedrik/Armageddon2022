@@ -51,13 +51,6 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
-        
-//            cell.destroyButton.setTitle("Вернуть", for: .normal)
-//            cell.destroyButton.backgroundColor = .red
-//            cell.buttonAction { [weak self] in
-//                
-//                
-//            }
  
         guard let data = KillListViewController.killListArray[indexPath.section].values?[indexPath.row] else { return UITableViewCell() }
             
@@ -106,5 +99,13 @@ extension KillListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            Objects.removeCell(indexPath, KillListViewController.killListArray)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }

@@ -145,8 +145,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             } else {
                 cell.asteroid.image = cell.big
             }
-
-            
+       
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in
@@ -217,10 +216,8 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                     item.keys == asteroidKey && item.values == [path]
                 }) {
                     KillListViewController.killListArray.remove(at: indexPath.row)
-//                    vc.destroyButton.backgroundColor = .systemBlue
                 } else {
                     KillListViewController.killListArray.append(asteroid)
-//                    vc.destroyButton.backgroundColor = .red
                     
                 }
             }

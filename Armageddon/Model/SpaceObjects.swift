@@ -80,4 +80,8 @@ extension Objects {
         }
         return returnValue
     }
+    
+    static func removeCell(_ indexPathSection: IndexPath, _ arr: [Objects]) {
+        KillListViewController.killListArray[indexPathSection.section].values?.remove(at: indexPathSection.row)
+    }
 }
