@@ -84,24 +84,22 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: AsteroidTableViewCell.identifire, for: indexPath) as? AsteroidTableViewCell {
-            
+
             guard let data = data else { return UITableViewCell() }
             guard var objects = data.nearEarthObjects?[dates[indexPath.section]]! else { return UITableViewCell() }
             
             
             // Отображать все астеройды или только опасные
             if UserDefaults.standard.bool(forKey: "isHazard") {
-
                 objects = objects.filter{ $0.isPotentiallyHazardousAsteroid! }
             }
             
+            
             let object = objects[indexPath.row]
             guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-            cell.gradient(isDanger: isHazard)
             
             // Название астеройда
             cell.headerViewLabel.text = object.name
-            
             
             // Общая информация
             if let closeData = object.closeApproachData,
@@ -119,11 +117,16 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             
             
             // Оценка опасности объекта
-            cell.gradient(isDanger: isHazard)
+
             if isHazard {
                 cell.gradeLabel.text = "Опасен"
                 cell.gradeLabel.textColor = .red
-                } else {
+                cell.headerView.leftColor = UIColor.leftColorRed
+                cell.headerView.rightColor = UIColor.rightColorRed
+                
+            } else {
+                cell.headerView.leftColor = UIColor.leftColorGreen
+                cell.headerView.rightColor = UIColor.rightColorGreen
                 cell.gradeLabel.text = "Не опасен"
                 cell.gradeLabel.textColor = .black
             }
@@ -138,12 +141,14 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             cell.diameterLabel.text = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
 
             let size = Int(minDiametr.average(x: Double(maxDiametr)))!
+            let asteroidImage = cell.headerView.asteroid
+            
             if size <= 100 {
-                cell.asteroid.image = cell.small
+                asteroidImage.image = cell.headerView.small
             } else if size > 100 && size < 300 {
-                cell.asteroid.image = cell.middle
+                asteroidImage.image = cell.headerView.middle
             } else {
-                cell.asteroid.image = cell.big
+                asteroidImage.image = cell.headerView.big
             }
        
             
@@ -164,10 +169,8 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                     cell.destroyButton.backgroundColor = .red
                 }
             }
-
             return cell
         }
-        
         return UITableViewCell()
     }
     

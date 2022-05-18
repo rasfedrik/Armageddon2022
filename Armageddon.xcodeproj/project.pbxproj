@@ -12,6 +12,7 @@
 		D836251E280EFD3D008776B7 /* KillListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836251D280EFD3D008776B7 /* KillListViewController.swift */; };
 		D83C051528130CC3004A5971 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83C051328130CC3004A5971 /* AsteroidTableViewCell.swift */; };
 		D83C051628130CC3004A5971 /* AsteroidTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D83C051428130CC3004A5971 /* AsteroidTableViewCell.xib */; };
+		D8785D95282D6A0C00183B3B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8785D94282D6A0C00183B3B /* HeaderView.swift */; };
 		D8AE6FD2280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */; };
 		D8B86239280BFBD8007D11F9 /* CellsShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B86238280BFBD8007D11F9 /* CellsShadow.swift */; };
 		D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA893E28070CCB001B6510 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		D836251D280EFD3D008776B7 /* KillListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillListViewController.swift; sourceTree = "<group>"; };
 		D83C051328130CC3004A5971 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
 		D83C051428130CC3004A5971 /* AsteroidTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AsteroidTableViewCell.xib; sourceTree = "<group>"; };
+		D8785D94282D6A0C00183B3B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D8AE6FD1280DBE4100F5AF5D /* DescriptionAsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionAsteroidViewController.swift; sourceTree = "<group>"; };
 		D8B86238280BFBD8007D11F9 /* CellsShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsShadow.swift; sourceTree = "<group>"; };
 		D8BA893B28070CCB001B6510 /* Armageddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armageddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 				D8E94A30280C7E1100477C92 /* DescriptionTableViewCell.xib */,
 				D8CC4D1A2817B387004D057E /* ApproachTableViewCell.swift */,
 				D8CC4D1B2817B387004D057E /* ApproachTableViewCell.xib */,
+				D8785D94282D6A0C00183B3B /* HeaderView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				D8E94A2C280C76BF00477C92 /* ChangeDistanceTableViewCell.swift in Sources */,
 				D8BA893F28070CCB001B6510 /* AppDelegate.swift in Sources */,
 				D8BA894128070CCB001B6510 /* SceneDelegate.swift in Sources */,
+				D8785D95282D6A0C00183B3B /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

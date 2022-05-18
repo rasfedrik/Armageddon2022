@@ -24,7 +24,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwS-TU-qho">
                         <rect key="frame" x="20" y="11" width="374" height="299"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etj-rs-K8P">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etj-rs-K8P" customClass="HeaderView" customModule="Armageddon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="374" height="140.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dinosaur" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-Xg-qJ8">
@@ -108,7 +108,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="destroyButtonAction:" destination="ccC-YU-2OT" eventType="touchUpInside" id="249-EM-h42"/>
+                                            <action selector="destroyButtonAction:" destination="ccC-YU-2OT" eventType="touchUpInside" id="4Up-IJ-HoS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -142,7 +142,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="destroyButton" destination="Gw0-Vz-tYF" id="8gt-0B-aGD"/>
+                <outlet property="destroyButton" destination="Gw0-Vz-tYF" id="DL9-PL-J9n"/>
                 <outlet property="diameterLabel" destination="avP-YL-6fo" id="PuE-cD-Tt1"/>
                 <outlet property="dinoImage" destination="23Q-Xg-qJ8" id="nWT-EO-N3G"/>
                 <outlet property="flightTimeLabel" destination="XoA-Rj-nhI" id="8aE-Ot-0g4"/>

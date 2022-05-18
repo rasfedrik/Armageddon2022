@@ -39,6 +39,7 @@ class DescriptionAsteroidViewController: UIViewController {
                                 forCellReuseIdentifier: ApproachTableViewCell.identifire)
         asteroidData()
 
+    
         descriptionView.layer.cornerRadius = 10
         descriptionView.clipsToBounds = true
         orbitTableView.dataSource = self
@@ -61,7 +62,6 @@ class DescriptionAsteroidViewController: UIViewController {
                 self.orbitTableView.reloadData()
                 
                 self.nameLabel.text = result.name!
-                
                 if result.isPotentiallyHazardousAsteroid! {
                     self.isHazardLabel.textColor = .red
                     self.isHazardLabel.text = "Опасен"
