@@ -162,11 +162,9 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 if KillListViewController.killListArray.contains(where: { item -> Bool in
                     item.keys == asteroidKey && item.values == [object]
                 }) {
-                    KillListViewController.killListArray.remove(at: indexPath.section)
-                    cell.destroyButton.backgroundColor = .systemBlue
+//                    KillListViewController.killListArray.remove(at: indexPath.section)
                 } else {
                     KillListViewController.killListArray.append(asteroid)
-                    cell.destroyButton.backgroundColor = .red
                 }
             }
             return cell
