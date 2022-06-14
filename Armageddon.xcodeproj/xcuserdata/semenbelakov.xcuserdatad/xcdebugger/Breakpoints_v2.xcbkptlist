@@ -30,10 +30,166 @@
             filePath = "Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "dates"
+            landmarkType = "24">
+=======
+>>>>>>> Stashed changes
             startingLineNumber = "14"
             endingLineNumber = "14"
             landmarkName = "ListOfAsteroidsViewController"
             landmarkType = "3">
+<<<<<<< Updated upstream
+=======
+            <Locations>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - adf9e49d7fdcbf4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.(data in _45EE0B8C63203A970216ED0E2A151944).getter : Swift.Optional&lt;Armageddon.SpaceObjects&gt;"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - adf9e49d7fdcbf4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.(data in _45EE0B8C63203A970216ED0E2A151944).setter : Swift.Optional&lt;Armageddon.SpaceObjects&gt;"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "141">
+               </Location>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - adf9e49d7fdcbd9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.(data in _45EE0B8C63203A970216ED0E2A151944).modify : Swift.Optional&lt;Armageddon.SpaceObjects&gt;"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - c54903f4ebc0a16e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.(data in _45EE0B8C63203A970216ED0E2A151944).modify : Swift.Optional&lt;Armageddon.SpaceObjects&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - 28f766af5b2b9540"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Armageddon.ListOfAsteroidsViewController"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "425">
+               </Location>
+               <Location
+                  uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - df55c09daf360748"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Armageddon.ListOfAsteroidsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Armageddon.ListOfAsteroidsViewController&gt;"
+                  moduleName = "Armageddon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/semenbelakov/Desktop/Develop/Armageddon/Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "336">
+               </Location>
+            </Locations>
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2133325-29C3-41D4-8102-0913B3C41EEC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB96FD36-7710-4D8F-9F93-74245DC4301D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00AC36DD-2464-42CC-9D70-61490307BBD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Armageddon/ViewControllers/ListOfAsteroidsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "goToFilter()"
+            landmarkType = "7">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
             <Locations>
                <Location
                   uuid = "1ACB3930-124A-419B-9F9D-A05BAE94C40C - adf9e49d7fdcbf4b"
