@@ -87,44 +87,24 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
 
             guard let data = data else { return UITableViewCell() }
             guard var objects = data.nearEarthObjects?[dates[indexPath.section]]! else { return UITableViewCell() }
-            
+            let object = objects[indexPath.row]
             
             // Отображать все астеройды или только опасные
             if UserDefaults.standard.bool(forKey: "isHazard") {
                 objects = objects.filter{ $0.isPotentiallyHazardousAsteroid! }
             }
             
-            
-            let object = objects[indexPath.row]
-            guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
-            
-            // Название астеройда
-//            cell.headerViewLabel.text = object.name
             cell.configure(data: data, dates: dates, indexPath: indexPath)
             
-//            // Общая информация
-//            if let closeData = object.closeApproachData,
-//               let date = closeData.first?.closeApproachDate,
-//               let distance = closeData.first?.missDistance {
-//                cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-//                
-//                // Дистанция
-//                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
-//                    cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
-//                } else {
-//                    cell.rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
-//                }
-//            }
-            
-            
             // Оценка опасности объекта
-
+            guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
+            
             if isHazard {
                 cell.gradeLabel.text = "Опасен"
                 cell.gradeLabel.textColor = .red
                 cell.headerView.leftColor = UIColor.leftColorRed
                 cell.headerView.rightColor = UIColor.rightColorRed
-                
+
             } else {
                 cell.headerView.leftColor = UIColor.leftColorGreen
                 cell.headerView.rightColor = UIColor.rightColorGreen
@@ -132,26 +112,6 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                 cell.gradeLabel.textColor = .black
             }
             
-            
-            // Размер объекта
-            guard let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin,
-                  let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
-            else {
-                return UITableViewCell()
-            }
-            cell.diameterLabel.text = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
-
-            let size = Int(minDiametr.average(x: Double(maxDiametr)))!
-            let asteroidImage = cell.headerView.asteroid
-            
-            if size <= 100 {
-                asteroidImage.image = cell.headerView.small
-            } else if size > 100 && size < 300 {
-                asteroidImage.image = cell.headerView.middle
-            } else {
-                asteroidImage.image = cell.headerView.big
-            }
-       
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in

@@ -40,12 +40,13 @@ class AsteroidTableViewCell: UITableViewCell {
     
     func configure(data: SpaceObjects?, dates: [String], indexPath: IndexPath) {
         let objects = data?.nearEarthObjects?[dates[indexPath.section]]!
-        let obj = objects![indexPath.row]
+        let object = objects![indexPath.row]
         
-        headerViewLabel.text = obj.name
+        // Название астеройда
+        headerViewLabel.text = object.name
         
         // Общая информация
-        if let closeData = obj.closeApproachData,
+        if let closeData = object.closeApproachData,
            let date = closeData.first?.closeApproachDate,
            let distance = closeData.first?.missDistance {
             flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
@@ -58,5 +59,38 @@ class AsteroidTableViewCell: UITableViewCell {
             }
         }
         
+        // Размер объекта
+        guard let minDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMin,
+              let maxDiametr = object.estimatedDiameter?.meters?.estimatedDiameterMax
+        else { return }
+        
+        diameterLabel.text = "Диаметр: \(minDiametr.average(x: Double(maxDiametr))) м"
+
+        let size = Int(minDiametr.average(x: Double(maxDiametr)))!
+        let asteroidImage = headerView.asteroid
+        
+        if size <= 100 {
+            asteroidImage.image = headerView.small
+        } else if size > 100 && size < 300 {
+            asteroidImage.image = headerView.middle
+        } else {
+            asteroidImage.image = headerView.big
+        }
+        
+//        guard let isHazard = object.isPotentiallyHazardousAsteroid else { return }
+//        
+//        if isHazard {
+//            gradeLabel.text = "Опасен"
+//            gradeLabel.textColor = .red
+//            headerView.leftColor = UIColor.leftColorRed
+//            headerView.rightColor = UIColor.rightColorRed
+//            
+//        } else {
+//            headerView.leftColor = UIColor.leftColorGreen
+//            headerView.rightColor = UIColor.rightColorGreen
+//            gradeLabel.text = "Не опасен"
+//            gradeLabel.textColor = .black
+//        }
+
     }
 }
