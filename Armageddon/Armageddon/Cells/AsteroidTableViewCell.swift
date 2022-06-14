@@ -37,4 +37,26 @@ class AsteroidTableViewCell: UITableViewCell {
     @IBAction func destroyButtonAction(_ sender: UIButton) {
         buttonAction?()
     }
+    
+    func configure(data: SpaceObjects?, dates: [String], indexPath: IndexPath) {
+        let objects = data?.nearEarthObjects?[dates[indexPath.section]]!
+        let obj = objects![indexPath.row]
+        
+        headerViewLabel.text = obj.name
+        
+        // Общая информация
+        if let closeData = obj.closeApproachData,
+           let date = closeData.first?.closeApproachDate,
+           let distance = closeData.first?.missDistance {
+            flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+            
+            // Дистанция
+            if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
+                rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+            } else {
+                rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
+            }
+        }
+        
+    }
 }

@@ -99,21 +99,22 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
             
             // Название астеройда
-            cell.headerViewLabel.text = object.name
+//            cell.headerViewLabel.text = object.name
+            cell.configure(data: data, dates: dates, indexPath: indexPath)
             
-            // Общая информация
-            if let closeData = object.closeApproachData,
-               let date = closeData.first?.closeApproachDate,
-               let distance = closeData.first?.missDistance {
-                cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-                
-                // Дистанция
-                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
-                    cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
-                } else {
-                    cell.rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
-                }
-            }
+//            // Общая информация
+//            if let closeData = object.closeApproachData,
+//               let date = closeData.first?.closeApproachDate,
+//               let distance = closeData.first?.missDistance {
+//                cell.flightTimeLabel.text = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
+//                
+//                // Дистанция
+//                if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
+//                    cell.rangeLabel.text = "на расстояние \((distance.kilometers!.cleanPrice())) км"
+//                } else {
+//                    cell.rangeLabel.text = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
+//                }
+//            }
             
             
             // Оценка опасности объекта
