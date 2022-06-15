@@ -93,25 +93,11 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             if UserDefaults.standard.bool(forKey: "isHazard") {
                 objects = objects.filter{ $0.isPotentiallyHazardousAsteroid! }
             }
-            
-            cell.configure(data: data, dates: dates, indexPath: indexPath)
-            
             // Оценка опасности объекта
             guard let isHazard = object.isPotentiallyHazardousAsteroid else { return UITableViewCell() }
             
-            if isHazard {
-                cell.gradeLabel.text = "Опасен"
-                cell.gradeLabel.textColor = .red
-                cell.headerView.leftColor = UIColor.leftColorRed
-                cell.headerView.rightColor = UIColor.rightColorRed
-
-            } else {
-                cell.headerView.leftColor = UIColor.leftColorGreen
-                cell.headerView.rightColor = UIColor.rightColorGreen
-                cell.gradeLabel.text = "Не опасен"
-                cell.gradeLabel.textColor = .black
-            }
-            
+            cell.configure(data: data, dates: dates, indexPath: indexPath)
+            cell.statusHazard(isHazard)
             
             // Добавление астеройда в список на уничтожение
             cell.buttonAction = { [weak self] in
@@ -144,12 +130,12 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
             vc.title = path.name
 
             DescriptionAsteroidViewController.asteroidId = path.id!
-
+            
             if let closeData = path.closeApproachData,
                let date = closeData.first?.closeApproachDate,
                let distance = closeData.first?.missDistance {
-                vc.flightTimeText = "Подлетает \((date.toDate() ?? Date()).toStringLocal())"
-                
+                vc.flightTimeText = "Подлетает: \((date.toDate() ?? Date()).toStringLocal())"
+
                 // Дистанция
                 if UserDefaults.standard.integer(forKey: "unitsType") == 0 {
                     vc.flightDistanceText = "на расстояние \((distance.kilometers!.cleanPrice())) км"
@@ -157,7 +143,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                     vc.flightDistanceText = "на расстояние \((distance.lunar!.cleanPrice())) л. орб."
                 }
             }
-            
+
 
             guard let minDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMin,
                   let maxDiametr = path.estimatedDiameter?.meters?.estimatedDiameterMax
@@ -180,7 +166,6 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
                     KillListViewController.killListArray.remove(at: indexPath.row)
                 } else {
                     KillListViewController.killListArray.append(asteroid)
-                    
                 }
             }
         }

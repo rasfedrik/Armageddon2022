@@ -1,4 +1,4 @@
-//
+  //
 //  DescriptionAsteroidViewController.swift
 //  Armageddon
 //
@@ -39,7 +39,6 @@ class DescriptionAsteroidViewController: UIViewController {
                                 forCellReuseIdentifier: ApproachTableViewCell.identifire)
         asteroidData()
 
-    
         descriptionView.layer.cornerRadius = 10
         descriptionView.clipsToBounds = true
         orbitTableView.dataSource = self

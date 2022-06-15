@@ -76,21 +76,20 @@ class AsteroidTableViewCell: UITableViewCell {
         } else {
             asteroidImage.image = headerView.big
         }
-        
-//        guard let isHazard = object.isPotentiallyHazardousAsteroid else { return }
-//        
-//        if isHazard {
-//            gradeLabel.text = "Опасен"
-//            gradeLabel.textColor = .red
-//            headerView.leftColor = UIColor.leftColorRed
-//            headerView.rightColor = UIColor.rightColorRed
-//            
-//        } else {
-//            headerView.leftColor = UIColor.leftColorGreen
-//            headerView.rightColor = UIColor.rightColorGreen
-//            gradeLabel.text = "Не опасен"
-//            gradeLabel.textColor = .black
-//        }
+    }
+    
+    func statusHazard(_ isHazard: Bool) {
+        if isHazard {
+            gradeLabel.text = "Опасен"
+            gradeLabel.textColor = .red
+            headerView.leftColor = UIColor.leftColorRed
+            headerView.rightColor = UIColor.rightColorRed
 
+        } else {
+            headerView.leftColor = UIColor.leftColorGreen
+            headerView.rightColor = UIColor.rightColorGreen
+            gradeLabel.text = "Не опасен"
+            gradeLabel.textColor = .black
+        }
     }
 }
