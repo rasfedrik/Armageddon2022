@@ -55,7 +55,7 @@ class DescriptionAsteroidViewController: UIViewController {
     
     // Получение информации об объектах
     func asteroidData() {
-        networkManager.asteroidData(id: DescriptionAsteroidViewController.asteroidId) { result in   
+        networkManager.asteroidData(id: DescriptionAsteroidViewController.asteroidId) { result in
             DispatchQueue.main.async {
                 DescriptionAsteroidViewController.asteroidDescription = result
                 self.orbitTableView.reloadData()

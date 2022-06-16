@@ -77,6 +77,7 @@ extension ListOfAsteroidsViewController: UITableViewDataSource, UITableViewDeleg
         if UserDefaults.standard.bool(forKey: "isHazard") {
             objects = objects.filter{$0.isPotentiallyHazardousAsteroid!}
         }
+        
 
         return objects.count
     }
